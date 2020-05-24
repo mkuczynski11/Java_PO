@@ -42,5 +42,4 @@ public class Screen {
         board[position.getY()][position.getX()].setBackground(c);
         board[position.getY()][position.getX()].setText(symbol);
     }
-    //funkcja byczku
 }
