@@ -15,6 +15,9 @@ public class Antelope extends Animal
     public Antelope(Position position, World world){
         super(ANTYLOPA_SILA, ANTYLOPA_INICJATYWA,world.define.SYMBOL_ANTYLOPA,position, world);
     }
+    public Antelope(int age, int strength, Position position, World world) {
+        super(age, ANTYLOPA_SILA, ANTYLOPA_INICJATYWA,world.define.SYMBOL_ANTYLOPA,position, world);
+    }
 
     @Override
     public String getName(){
@@ -26,8 +29,10 @@ public class Antelope extends Animal
     }
     @Override
     public Organism copy(Position position){
-        return new Antelope(position, getWorld());
+        return new Antelope(getAge(), getStrength(), position, getWorld());
     }
+    @Override
+    public Organism child(Position position) {return new Antelope(position, getWorld());}
     @Override
     public void save(){
 

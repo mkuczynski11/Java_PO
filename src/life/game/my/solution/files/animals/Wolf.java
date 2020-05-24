@@ -12,6 +12,9 @@ public class Wolf extends Animal
     public Wolf(Position position, World world){
         super(WILK_SILA, WILK_INICJATYWA,world.define.SYMBOL_WILK,position, world);
     }
+    public Wolf(int age, int strength, Position position, World world){
+        super(age,strength, WILK_INICJATYWA,world.define.SYMBOL_WILK,position, world);
+    }
 
     @Override
     public String getName(){
@@ -23,8 +26,10 @@ public class Wolf extends Animal
     }
     @Override
     public Organism copy(Position position){
-        return new Wolf(position, getWorld());
+        return new Wolf(getAge(), getStrength(), position, getWorld());
     }
+    @Override
+    public Organism child(Position position) {return new Wolf(position, getWorld());}
     @Override
     public void save(){
 

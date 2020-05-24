@@ -25,19 +25,20 @@ public class World {
         this.screenY = screenY;
         this.turn = 0;
         this.organisms = new ArrayList<>();
+        this.toKill = new ArrayList<>();
         this.board = new Organism[screenY][screenX];
         for(int i =0; i < screenY; i++){
             for(int j =0;j<screenX; j++){
                 board[i][j] = new Ground(new Position(j,i),this);
             }
         }
-        this.screen = new Screen(screenX,screenY, this);
+        this.screen = new Screen(this);
         this.define = new DEFINE();
         fillUpTheWorld();
     }
 
     private void fillUpTheWorld(){
-        fillUpHelper(define.CZLOWIEK_AMOUNT, define.SYMBOL_CZLOWIEK);
+       // fillUpHelper(define.CZLOWIEK_AMOUNT, define.SYMBOL_CZLOWIEK);
         fillUpHelper(define.WILK_AMOUNT, define.SYMBOL_WILK);
         fillUpHelper(define.ZOLW_AMOUNT, define.SYMBOL_ZOLW);
         fillUpHelper(define.OWCA_AMOUNT, define.SYMBOL_OWCA);
@@ -103,10 +104,6 @@ public class World {
         setTurn(getTurn()+1);
     }
 
-    public void drawWorld(){
-
-    }
-
     public Organism getOrganism(Position position){
         return board[position.getY()][position.getX()];
     }
@@ -115,14 +112,11 @@ public class World {
     }
 
     public void moveOrganism(Position from, Position to){
-        Organism tmp = board[from.getY()][from.getX()];
-        board[from.getY()][from.getX()] = board[to.getY()][to.getX()];
-        board[from.getY()][from.getX()].getPosition().setX(to.getX());
-        board[from.getY()][from.getX()].getPosition().setY(to.getY());
-
-        board[to.getY()][to.getX()] = tmp;
-        board[to.getY()][to.getX()].getPosition().setX(from.getX());
-        board[to.getY()][to.getX()].getPosition().setY(from.getY());
+        Organism tmp_from = board[from.getY()][from.getX()].copy(to);
+        Organism tmp_to = board[to.getY()][to.getX()].copy(from);
+        board[from.getY()][from.getX()] = tmp_to;
+        board[to.getY()][to.getX()] = tmp_from;
+        screen.moveOrganism(from,to);
     }
 
     public void addToKill(Organism organism){
@@ -146,10 +140,10 @@ public class World {
             if(organisms.get(i).getPosition().getX() == organism.getPosition().getX()
              && organisms.get(i).getPosition().getY() == organism.getPosition().getY())
             {
-                organism = new Ground(organism.getPosition(), organism.getWorld());
                 Organism tmp = new Ground(organism.getPosition(), organism.getWorld());
                 board[organism.getPosition().getY()][organism.getPosition().getX()] = tmp;
                 organisms.remove(i);
+                screen.addOrganism(tmp,tmp.getPosition());
                 break;
             }
             i++;

@@ -15,6 +15,9 @@ public class Sheep extends Animal
     public Sheep(Position position, World world){
         super(OWCA_SILA, OWCA_INICJATYWA, world.define.SYMBOL_OWCA, position, world);
     }
+    public Sheep(int age, int strength, Position position, World world){
+        super(age,strength, OWCA_INICJATYWA, world.define.SYMBOL_OWCA, position, world);
+    }
 
     @Override
     public String getName(){
@@ -26,8 +29,10 @@ public class Sheep extends Animal
     }
     @Override
     public Organism copy(Position position){
-        return new Sheep(position, getWorld());
+        return new Sheep(getAge(), getStrength(), position, getWorld());
     }
+    @Override
+    public Organism child(Position position) {return new Sheep(position, getWorld());}
     @Override
     public void save(){
 

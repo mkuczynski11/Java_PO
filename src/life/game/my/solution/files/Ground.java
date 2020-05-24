@@ -1,5 +1,8 @@
 package life.game.my.solution.files;
 
+import life.game.my.solution.files.animals.Antelope;
+import life.game.my.solution.files.animals.Wolf;
+
 import java.awt.*;
 
 public class Ground extends Organism
@@ -8,6 +11,9 @@ public class Ground extends Organism
         super(0,0, "g",position,world);
         setAlive(false);
         setReady(false);
+    }
+    public Ground(int age, int strength, Position position, World world){
+        this(position,world);
     }
 
     @Override
@@ -22,6 +28,8 @@ public class Ground extends Organism
     public Organism copy(Position position){
         return new Ground(position, getWorld());
     }
+    @Override
+    public Organism child(Position position) {return new Ground(position, getWorld());}
     @Override
     public void save(){
 

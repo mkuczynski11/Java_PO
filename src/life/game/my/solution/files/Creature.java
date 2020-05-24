@@ -8,6 +8,7 @@ public interface Creature
     boolean collision(Organism enemy);
     String getName();
     Organism copy(Position position);
+    Organism child(Position position);
     void draw();
     void save();
     Color getColor();

@@ -15,6 +15,9 @@ public class Turtle extends Animal
     public Turtle(Position position, World world){
         super(ZOLW_SILA, ZOLW_INICJATYWA,world.define.SYMBOL_ZOLW,position, world);
     }
+    public Turtle(int age, int strength, Position position, World world){
+        super(age, strength,ZOLW_INICJATYWA,world.define.SYMBOL_ZOLW,position, world);
+    }
 
     @Override
     public String getName(){
@@ -26,8 +29,10 @@ public class Turtle extends Animal
     }
     @Override
     public Organism copy(Position position){
-        return new Turtle(position, getWorld());
+        return new Turtle(getAge(), getStrength(), position, getWorld());
     }
+    @Override
+    public Organism child(Position position) {return new Turtle(position, getWorld());}
     @Override
     public void save(){
 

@@ -15,6 +15,10 @@ public abstract class Animal extends Organism
         this.movementRange = BASE_RANGE;
         this.movementChanse = BASE_CHANCE;
     }
+    public Animal(int age, int strength, int iniciative, String symbol, Position position, World world){
+        this(strength,iniciative,symbol,position,world);
+        this.setAge(age);
+    }
 
     public int getMovementRange() {return movementRange;}
     public double getMovementChanse() {return movementChanse;}
