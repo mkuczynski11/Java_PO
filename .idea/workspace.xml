@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="a1c890cd-0a27-40b2-8571-d8a1632eb4d2" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/life/game/my/solution/files/gui/Screen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/life/game/my/solution/files/gui/Screen.java" afterDir="false" />
-    </list>
+    <list default="true" id="a1c890cd-0a27-40b2-8571-d8a1632eb4d2" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -65,10 +63,10 @@
     <servers />
   </component>
   <component name="WindowStateProjectService">
-    <state x="614" y="114" key="CommitChangelistDialog2" timestamp="1590314603367">
+    <state x="614" y="114" key="CommitChangelistDialog2" timestamp="1590315104198">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="614" y="114" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1590314603367" />
+    <state x="614" y="114" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1590315104198" />
     <state x="1220" y="275" key="FileChooserDialogImpl" timestamp="1590165635807">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -105,10 +103,18 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="914" height="347" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1590265913286" />
+    <state x="806" y="242" key="RollbackChangesDialog" timestamp="1590315111594">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="806" y="242" key="RollbackChangesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1590315111594" />
     <state x="0" y="0" key="com.intellij.ide.util.TipDialog" timestamp="1590313604227">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="0" y="0" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1590313604227" />
+    <state x="769" y="437" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1590315065447">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="769" y="437" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1040@0.0.1920.1040" timestamp="1590315065447" />
     <state x="213" y="54" width="697" height="1019" key="dock-window-1" timestamp="1590248615173">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
