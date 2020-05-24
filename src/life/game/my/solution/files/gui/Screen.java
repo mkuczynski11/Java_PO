@@ -5,20 +5,28 @@ import life.game.my.solution.files.Position;
 import life.game.my.solution.files.World;
 
 import javax.swing.*;
+import javax.swing.border.Border;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class Screen implements ActionListener
 {
-    private static final int WIDTH = 1000;
-    private static final int HEIGHT = 1000;
-    private static final int MENU_Y =10;
-    private static final int MENU_WIDTH =190;
-    private static final int MENU_X = WIDTH-MENU_WIDTH-10;
-    private static final int MENU_HEIGHT =HEIGHT - 2*MENU_Y;
-    private static final int GAMEPANEL_WIDTH = 780 ;
-    private static final int GAMEPANEL_HEIGHT = 980 ;
+    private static final int WIDTH = 1920;
+    private static final int HEIGHT = 1020;
+    private static final int SPACE = 10;
+    private static final int MENU_Y = SPACE;
+    private static final int MENU_X = 800;
+    private static final int MENU_WIDTH = 200 - 1*SPACE;
+    private static final int MENU_HEIGHT = HEIGHT - 2*SPACE;
+    private static final int GAMEPANEL_X= SPACE;
+    private static final int GAMEPANEL_Y= SPACE;
+    private static final int GAMEPANEL_WIDTH = 800-2*SPACE ;
+    private static final int GAMEPANEL_HEIGHT = HEIGHT - 2*SPACE;
+    private static final int EVENTLOG_X =1000;
+    private static final int EVENTLOG_Y =SPACE;
+    private static final int EVENTLOG_WIDTH = WIDTH-EVENTLOG_X-1*SPACE;
+    private static final int EVENTLOG_HEIGHT =HEIGHT-2*SPACE;
     private World world;
     private JFrame gameframe;
     private JPanel gamepanel;
@@ -36,6 +44,7 @@ public class Screen implements ActionListener
     public Screen(World world) {
         this.world = world;
         gameframe = new JFrame("Life game");
+        gameframe.setLayout(new BorderLayout());
         int x = world.getScreenX();
         int y = world.getScreenY();
 
@@ -43,48 +52,62 @@ public class Screen implements ActionListener
         int button_height = GAMEPANEL_HEIGHT/y;
 
         this.gamepanel = new JPanel();
+        gameframe.add(gamepanel, BorderLayout.CENTER);
         gamepanel.setLayout(new GridLayout(y,x));
-        gamepanel.setBounds(10,10,GAMEPANEL_WIDTH, GAMEPANEL_HEIGHT);
+        gamepanel.setBounds(GAMEPANEL_X,GAMEPANEL_Y,GAMEPANEL_WIDTH, GAMEPANEL_HEIGHT);
         this.board = new JButton[y][x];
 
         for(int i =0; i < getWorld().getScreenY(); i++){
             for(int j =0; j < getWorld().getScreenY(); j++){
                 board[i][j] = new JButton(getWorld().define.SYMBOL_GROUND);
                 board[i][j].setBackground(Color.LIGHT_GRAY);
-                board[i][j].setBounds(10+(button_width*j),10+(button_height*i),button_width,button_height);
+                board[i][j].setBounds(SPACE+(button_width*j),SPACE+(button_height*i),button_width,button_height);
                 gamepanel.add(board[i][j]);
             }
         }
 
         this.menu = new JPanel();
-        menu.setLayout(null);
-        menu.setBounds(MENU_X,MENU_Y,MENU_WIDTH,MENU_HEIGHT);
+        menu.setLayout(new GridLayout(4,1));
+
         this.bExit = new JButton("Exit");
         bExit.setBackground(Color.BLACK);
         bExit.setForeground(Color.white);
-        bExit.setBounds(MENU_X+10,MENU_Y,MENU_WIDTH-20, (MENU_HEIGHT/4)-10);
+        bExit.setLayout(null);
+        //bExit.setBounds(MENU_X+SPACE,MENU_Y,MENU_WIDTH-2*SPACE, (MENU_HEIGHT/4)-SPACE);
         bExit.addActionListener(this);
-        menu.add(bExit);
         this.bNextTurn = new JButton("Tura");
         bNextTurn.setBackground(Color.BLACK);
         bNextTurn.setForeground(Color.white);
-        bNextTurn.setBounds(MENU_X+10,MENU_Y+(MENU_HEIGHT/4),MENU_WIDTH-20,(MENU_HEIGHT/4)-10);
+        bNextTurn.setLayout(null);
+        //bNextTurn.setBounds(MENU_X+SPACE,MENU_Y+(MENU_HEIGHT/4),MENU_WIDTH-2*SPACE,(MENU_HEIGHT/4)-SPACE);
         bNextTurn.addActionListener(this);
-        menu.add(bNextTurn);
         this.bSaveGame = new JButton("Zapisz");
         bSaveGame.setBackground(Color.BLACK);
-        bSaveGame.setBounds(MENU_X+10,MENU_Y+2*(MENU_HEIGHT/4),MENU_WIDTH-20,(MENU_HEIGHT/4)-10);
+        bSaveGame.setForeground(Color.white);
+        bSaveGame.setLayout(null);
+        //bSaveGame.setBounds(MENU_X+SPACE,MENU_Y+2*(MENU_HEIGHT/4),MENU_WIDTH-2*SPACE,(MENU_HEIGHT/4)-SPACE);
         bSaveGame.addActionListener(this);
-        menu.add(bSaveGame);
         this.bLoadGame = new JButton("Zaladuj");
         bLoadGame.setBackground(Color.BLACK);
-        bLoadGame.setBounds(MENU_X+10,MENU_Y+3*(MENU_HEIGHT/4),MENU_WIDTH-20,(MENU_HEIGHT/4));
+        bLoadGame.setForeground(Color.white);
+        bLoadGame.setLayout(null);
+        //bLoadGame.setBounds(MENU_X+SPACE,MENU_Y+3*(MENU_HEIGHT/4),MENU_WIDTH-2*SPACE,(MENU_HEIGHT/4));
         bLoadGame.addActionListener(this);
+
+        menu.add(bExit);
+        menu.add(bNextTurn);
+        menu.add(bSaveGame);
         menu.add(bLoadGame);
 
-        gameframe.add(gamepanel);
-        gameframe.add(menu);
-        gameframe.add(eventlog);
+        gameframe.add(menu, BorderLayout.WEST);
+
+        /*this.eventlog = new JPanel();
+        eventlog.setLayout(null);
+        eventlog.setBounds(EVENTLOG_X,EVENTLOG_Y,EVENTLOG_WIDTH,EVENTLOG_HEIGHT);
+        textField = new JTextField();
+        textField.setLayout(null);
+        textField.setBounds(EVENTLOG_X+SPACE,EVENTLOG_Y,EVENTLOG_WIDTH-2*SPACE,EVENTLOG_HEIGHT);
+*/
         gameframe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         gameframe.setSize(1920,1080);
         gameframe.setExtendedState(JFrame.MAXIMIZED_BOTH);
