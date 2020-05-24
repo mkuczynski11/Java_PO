@@ -8,7 +8,6 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.image.ImageObserver;
 
 public class Screen implements ActionListener
 {
@@ -24,6 +23,8 @@ public class Screen implements ActionListener
     private JFrame gameframe;
     private JPanel gamepanel;
     private JPanel menu;
+    private JPanel eventlog;
+    private JTextField textField;
     private JButton bExit;
     private JButton bNextTurn;
     private JButton bSaveGame;
@@ -83,8 +84,9 @@ public class Screen implements ActionListener
 
         gameframe.add(gamepanel);
         gameframe.add(menu);
+        gameframe.add(eventlog);
         gameframe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        gameframe.setSize(WIDTH,HEIGHT);
+        gameframe.setSize(1920,1080);
         gameframe.setExtendedState(JFrame.MAXIMIZED_BOTH);
         gameframe.setBackground(Color.yellow);
         gameframe.setVisible(true);

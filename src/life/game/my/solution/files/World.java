@@ -116,6 +116,8 @@ public class World {
         Organism tmp_to = board[to.getY()][to.getX()];
         board[from.getY()][from.getX()] = tmp_to;
         board[to.getY()][to.getX()] = tmp_from;
+        int max = 2;
+        if(board[to.getY()][to.getX()] instanceof Ground) max--;
         int moves = 0;
         for(Organism o: organisms)
         {
@@ -129,7 +131,7 @@ public class World {
                 o.setPosition(from);
                 moves++;
             }
-            if (moves == 2) break;
+            if (moves == max) break;
         }
         screen.moveOrganism(from,to);
     }
