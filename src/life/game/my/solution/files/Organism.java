@@ -20,7 +20,7 @@ public abstract class Organism implements Creature
         this.strength = strength;
         this.iniciative = iniciative;
         this.symbol = symbol;
-        this.position = position;
+        this.position = new Position(position.getX(),position.getY());
         this.world = world;
         this.alive = true;
         this.ready = true;

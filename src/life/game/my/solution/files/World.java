@@ -112,10 +112,25 @@ public class World {
     }
 
     public void moveOrganism(Position from, Position to){
-        Organism tmp_from = board[from.getY()][from.getX()].copy(to);
-        Organism tmp_to = board[to.getY()][to.getX()].copy(from);
+        Organism tmp_from = board[from.getY()][from.getX()];
+        Organism tmp_to = board[to.getY()][to.getX()];
         board[from.getY()][from.getX()] = tmp_to;
         board[to.getY()][to.getX()] = tmp_from;
+        int moves = 0;
+        for(Organism o: organisms)
+        {
+            if(o.getPosition().getX() == from.getX() && o.getPosition().getY() == from.getY())
+            {
+                o.setPosition(to);
+                moves++;
+            }
+            else if(o.getPosition().getX() == to.getX() && o.getPosition().getY() == to.getY())
+            {
+                o.setPosition(from);
+                moves++;
+            }
+            if (moves == 2) break;
+        }
         screen.moveOrganism(from,to);
     }
 
