@@ -1,0 +1,37 @@
+package life.game.my.solution.files;
+
+import java.awt.*;
+
+public class Ground extends Organism
+{
+    public Ground(Position position, World world){
+        super(0,0, "g",position,world);
+        setAlive(false);
+        setReady(false);
+    }
+
+    @Override
+    public void action(){
+
+    }
+    @Override
+    public String getName(){
+        return "Ground";
+    }
+    @Override
+    public Organism copy(Position position){
+        return new Ground(position, getWorld());
+    }
+    @Override
+    public void save(){
+
+    }
+    @Override
+    public boolean collision(Organism enemy){
+        return true;
+    }
+    @Override
+    public Color getColor(){
+        return Color.lightGray;
+    }
+}

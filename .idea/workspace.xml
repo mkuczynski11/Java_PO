@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="a1c890cd-0a27-40b2-8571-d8a1632eb4d2" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Life_game.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/Life_game/META-INF/Life_game.kotlin_module" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/Life_game/life/game/my/solution/Life_game.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/Life_game/life/game/my/solution/files/Animal.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/Life_game/life/game/my/solution/files/Creature.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/Life_game/life/game/my/solution/files/DEFINE.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/Life_game/life/game/my/solution/files/Ground.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/Life_game/life/game/my/solution/files/Organism.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/Life_game/life/game/my/solution/files/Position.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/Life_game/life/game/my/solution/files/World.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/Life_game/life/game/my/solution/files/animals/Antelope.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/Life_game/life/game/my/solution/files/animals/Fox.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/Life_game/life/game/my/solution/files/animals/Sheep.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/Life_game/life/game/my/solution/files/animals/Turtle.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/Life_game/life/game/my/solution/files/animals/Wolf.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/Life_game/life/game/my/solution/files/gui/Screen.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/life/game/my/solution/Life_game.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/life/game/my/solution/files/Animal.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/life/game/my/solution/files/Creature.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/life/game/my/solution/files/DEFINE.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/life/game/my/solution/files/Ground.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/life/game/my/solution/files/Organism.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/life/game/my/solution/files/Position.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/life/game/my/solution/files/World.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/life/game/my/solution/files/animals/Antelope.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/life/game/my/solution/files/animals/Fox.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/life/game/my/solution/files/animals/Sheep.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/life/game/my/solution/files/animals/Turtle.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/life/game/my/solution/files/animals/Wolf.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/life/game/my/solution/files/gui/Screen.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Interface" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1cGr0HhHDPcaAFWLUJcSWPecWNW" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+  </component>
+  <component name="RunManager">
+    <configuration name="Life_game" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="life.game.my.solution.Life_game" />
+      <module name="Life_game" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="life.game.my.solution.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.Life_game" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="a1c890cd-0a27-40b2-8571-d8a1632eb4d2" name="Default Changelist" comment="" />
+      <created>1590165546167</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1590165546167</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="614" y="114" key="CommitChangelistDialog2" timestamp="1590314603367">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="614" y="114" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1590314603367" />
+    <state x="1220" y="275" key="FileChooserDialogImpl" timestamp="1590165635807">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="1220" y="275" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1590165635807" />
+    <state width="914" height="347" key="GridCell.Tab.0.bottom" timestamp="1590265913286">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="914" height="347" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1590265913286" />
+    <state width="914" height="347" key="GridCell.Tab.0.center" timestamp="1590265913286">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="914" height="347" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1590265913286" />
+    <state width="914" height="347" key="GridCell.Tab.0.left" timestamp="1590265913285">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="914" height="347" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1590265913285" />
+    <state width="914" height="347" key="GridCell.Tab.0.right" timestamp="1590265913286">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="914" height="347" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1590265913286" />
+    <state width="914" height="347" key="GridCell.Tab.1.bottom" timestamp="1590265913286">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="914" height="347" key="GridCell.Tab.1.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1590265913286" />
+    <state width="914" height="347" key="GridCell.Tab.1.center" timestamp="1590265913286">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="914" height="347" key="GridCell.Tab.1.center/0.0.1920.1040@0.0.1920.1040" timestamp="1590265913286" />
+    <state width="914" height="347" key="GridCell.Tab.1.left" timestamp="1590265913286">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="914" height="347" key="GridCell.Tab.1.left/0.0.1920.1040@0.0.1920.1040" timestamp="1590265913286" />
+    <state width="914" height="347" key="GridCell.Tab.1.right" timestamp="1590265913286">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="914" height="347" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1590265913286" />
+    <state x="0" y="0" key="com.intellij.ide.util.TipDialog" timestamp="1590313604227">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="0" y="0" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1590313604227" />
+    <state x="213" y="54" width="697" height="1019" key="dock-window-1" timestamp="1590248615173">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="213" y="54" width="697" height="1019" key="dock-window-1/0.0.1920.1040@0.0.1920.1040" timestamp="1590248615173" />
+    <state x="1096" y="242" key="run.anything.popup" timestamp="1590244634127">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="1096" y="242" key="run.anything.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1590244634127" />
+    <state x="1103" y="229" width="672" height="678" key="search.everywhere.popup" timestamp="1590238249458">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="1103" y="229" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1590238249458" />
+  </component>
+</project>
