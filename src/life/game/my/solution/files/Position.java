@@ -25,16 +25,4 @@ public class Position
     public void setY(int y){
         this.y = y;
     }
-
-    public void generateRandomPosition(int screenX, int screenY){
-        ArrayList<Position> arr = new ArrayList<Position>();
-        if(!(x == 0)) arr.add(new Position(-1,0));
-        if(!(x == screenX -1)) arr.add(new Position(1,0));
-        if(!(y == 0)) arr.add(new Position(0,-1));
-        if(!(y == screenY -1)) arr.add(new Position(0,1));
-        arr.add(new Position(0,0));
-        int choice = r.nextInt(arr.size());
-        this.x += arr.get(choice).getX();
-        this.y += arr.get(choice).getY();
-    }
 }

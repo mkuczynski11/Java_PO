@@ -1,19 +1,22 @@
 package life.game.my.solution.files;
 
-import java.util.ArrayList;
-import java.util.Random;
+import java.util.*;
 
 import life.game.my.solution.files.animals.*;
 import life.game.my.solution.files.gui.Screen;
+import life.game.my.solution.files.gui.Commentator;
 
 public class World {
     private final int screenX;
     private final int screenY;
     private int turn;
-    private ArrayList<Organism> organisms;
-    private ArrayList<Organism> toKill;
+    private List<Organism> organisms;
+    private List<Organism> toKill;
+    private List<Organism> toAdd;
+    private List<Organism> toFix;
     private Organism[][] board;
     private Screen screen;
+    private Commentator commentator;
     public DEFINE define;
 
     public World(){
@@ -26,6 +29,8 @@ public class World {
         this.turn = 0;
         this.organisms = new ArrayList<>();
         this.toKill = new ArrayList<>();
+        this.toAdd = new ArrayList<>();
+        this.toFix = new ArrayList<>();
         this.board = new Organism[screenY][screenX];
         for(int i =0; i < screenY; i++){
             for(int j =0;j<screenX; j++){
@@ -34,6 +39,7 @@ public class World {
         }
         this.screen = new Screen(this);
         this.define = new DEFINE();
+        this.commentator = new Commentator();
         fillUpTheWorld();
     }
 
@@ -49,7 +55,7 @@ public class World {
         fillUpHelper(define.GUARANA_AMOUNT, define.SYMBOL_GUARANA);
         fillUpHelper(define.WILCZEJAGODY_AMOUNT, define.SYMBOL_WIKLCZEJAGODY);
         fillUpHelper(define.BARSZCZSOSNOWSKIEGO_AMOUNT, define.SYMBOL_BARSZCZSOSNOWSKIEGO);*/
-        //posortuj
+        Collections.sort(organisms, new CustomComparator());
     }
     private void fillUpHelper(int amount, String symbol){
         int i = 0;
@@ -86,21 +92,24 @@ public class World {
     public int getScreenX() {return screenX;}
     public int getScreenY() {return screenY;}
     public int getTurn() {return turn;}
+    public Commentator getCommentator() {return commentator;}
+    public Screen getScreen() {return screen;}
 
     private void setTurn(int turn){
         this.turn = turn;
     }
 
     public void makeTurn(){
+        screen.clearLogs();
         for(Organism o : organisms)
         {
             o.action();
             o.setAge(o.getAge()+1);
         }
-        //addOrganisms();
+        addOrganisms();
         killOrganisms();
-        //fixOrganisms();
-        //sort
+        fixOrganisms();
+        Collections.sort(organisms, new CustomComparator());
         setTurn(getTurn()+1);
     }
 
@@ -165,6 +174,48 @@ public class World {
             }
             i++;
         }
+    }
+
+    public void addToAdd(Organism organism){
+        if(!(organism instanceof Ground)){
+            toAdd.add(organism);
+            board[organism.getPosition().getY()][organism.getPosition().getX()] = organism;
+        }
+    }
+
+    private void addOrganisms(){
+        while(true)
+        {
+            if(toAdd.size() == 0) break;
+            addHelper(toAdd.get(0));
+            toAdd.remove(0);
+        }
+    }
+
+    private void addHelper(Organism organism){
+        organism.setParent(false);
+        organism.setReady(true);
+        organisms.add(organism);
+        screen.addOrganism(organism,organism.getPosition());
+    }
+
+    public void addToFix(Organism organism){
+        if(!(organism instanceof Ground)){
+            toFix.add(organism);
+        }
+    }
+
+    private void fixOrganisms(){
+        while(true)
+        {
+            if(toFix.size() == 0) break;
+            fixHelper(toFix.get(0));
+            toFix.remove(0);
+        }
+    }
+
+    private void fixHelper(Organism organism){
+        organism.setParent(false);
     }
 
 }

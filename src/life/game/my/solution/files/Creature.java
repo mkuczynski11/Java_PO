@@ -9,7 +9,6 @@ public interface Creature
     String getName();
     Organism copy(Position position);
     Organism child(Position position);
-    void draw();
     void save();
     Color getColor();
 }

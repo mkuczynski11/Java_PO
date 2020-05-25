@@ -1,6 +1,7 @@
 package life.game.my.solution.files;
 
-import java.awt.*;
+import java.util.ArrayList;
+import java.util.Random;
 
 public abstract class Organism implements Creature
 {
@@ -63,8 +64,24 @@ public abstract class Organism implements Creature
         this.parent = parent;
     }
 
-    @Override
-    public void draw(){
-        //wypisz symbol
+    public ArrayList<Position> generateCombinations(Position position){
+        ArrayList<Position> combinations = new ArrayList<>();
+        int x = position.getX();
+        int y = position.getY();
+        if(!(x== 0)) combinations.add(new Position(x-1,y));
+        if(!(x == getWorld().getScreenX() - 1)) combinations.add(new Position(x+1,y));
+        if(!(y == 0)) combinations.add(new Position(x,y-1));
+        if(!(y == getWorld().getScreenY() - 1)) combinations.add(new Position(x,y+1));
+
+        return combinations;
     }
+
+    public Position generateRandomPosition(Position position){
+        ArrayList<Position> combinations = generateCombinations(position);
+        combinations.add(new Position(position.getX(),position.getY()));
+        Random r = new Random();
+        int choice = r.nextInt(combinations.size());
+        return combinations.get(choice);
+    }
+
 }

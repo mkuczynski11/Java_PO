@@ -1,5 +1,6 @@
 package life.game.my.solution.files;
 
+import java.util.List;
 import java.util.Random;
 
 public abstract class Animal extends Organism
@@ -32,28 +33,25 @@ public abstract class Animal extends Organism
 
     private boolean isAbleToMove(){
         Random r = new Random();
-        if(r.nextDouble() < movementChanse) {return true;}
-        else return false;
+        return r.nextDouble() < movementChanse;
     }
 
     private boolean move(){
-        Position heading = new Position(getPosition().getX(), getPosition().getY());
-        heading.generateRandomPosition(getWorld().getScreenX(), getWorld().getScreenY());
+        Position heading = this.generateRandomPosition(this.getPosition());
         if(heading.getX() == getPosition().getX() && heading.getY() == getPosition().getY()){
-            //oglos przesuniecie w miejscu
+            getWorld().getScreen().addAction(getWorld().getCommentator().announceMove(this,this.getPosition(),heading));
             return true;
         }
         Organism tmp = getWorld().getOrganism(heading);
         if(tmp instanceof Ground || !tmp.isAlive())
         {
-            //oglos przesuniecie
+            getWorld().getScreen().addAction(getWorld().getCommentator().announceMove(this,this.getPosition(),heading));
             getWorld().moveOrganism(getPosition(), heading);
             return true;
         }
         else if(isSameSpecies(tmp) && tmp.isAlive())
         {
             if(!isParent() && !tmp.isParent()){
-                //oglos rozmnozenie
                 breed(tmp);
                 return false;
             }
@@ -62,7 +60,7 @@ public abstract class Animal extends Organism
         else if (tmp.isAlive())
         {
             if(tmp.collision(this)){
-                //oglos przesuniecie
+                getWorld().getScreen().addAction(getWorld().getCommentator().announceMove(this,this.getPosition(),heading));
                 getWorld().moveOrganism(getPosition(), heading);
             }
             return false;
@@ -71,7 +69,27 @@ public abstract class Animal extends Organism
     }
 
     private void breed(Organism lover){
-        //rozmnazanie
+        List<Position> combinations = this.generateCombinations(lover.getPosition());
+        Random r = new Random();
+        while(true)
+        {
+            if(combinations.size() == 0) break;
+            int choice = r.nextInt(combinations.size());
+            Position p = combinations.get(choice);
+            Organism tmp = getWorld().getOrganism(p);
+            if(tmp instanceof Ground || !(tmp.isAlive()))
+            {
+                Organism child = this.child(p);
+                child.setReady(false);
+                child.setParent(true);
+                getWorld().addToAdd(child);
+                getWorld().addToFix(this);
+                getWorld().addToFix(lover);
+                getWorld().getScreen().addAction(getWorld().getCommentator().announceBreed(this,lover,child));
+                return;
+            }
+            combinations.remove(choice);
+        }
     }
 
     public abstract boolean isSameSpecies(Organism organism);
@@ -95,7 +113,7 @@ public abstract class Animal extends Organism
             enemy.setAlive(false);
             enemy.setReady(false);
             getWorld().addToKill(enemy);
-            //oglos zabojstwo
+            getWorld().getScreen().addAction(getWorld().getCommentator().announceKill(this, enemy));
             return false;
         }
         else
@@ -103,7 +121,7 @@ public abstract class Animal extends Organism
             setAlive(false);
             setReady(false);
             getWorld().addToKill(this);
-            //oglos zabojstwo
+            getWorld().getScreen().addAction(getWorld().getCommentator().announceKill(enemy,this));
             return true;
         }
     }
