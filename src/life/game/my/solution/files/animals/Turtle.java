@@ -11,12 +11,11 @@ public class Turtle extends Animal
 {
     private static final int ZOLW_SILA = 2;
     private static final int ZOLW_INICJATYWA = 1;
+    private static final int ZOLW_SZANSA_RUCHU = 25;
 
     public Turtle(Position position, World world){
         super(ZOLW_SILA, ZOLW_INICJATYWA,world.define.SYMBOL_ZOLW,position, world);
-    }
-    public Turtle(int age, int strength, Position position, World world){
-        super(age, strength,ZOLW_INICJATYWA,world.define.SYMBOL_ZOLW,position, world);
+        this.setMovementChanse(ZOLW_SZANSA_RUCHU);
     }
 
     @Override
@@ -28,10 +27,6 @@ public class Turtle extends Animal
         return (organism instanceof Turtle);
     }
     @Override
-    public Organism copy(Position position){
-        return new Turtle(getAge(), getStrength(), position, getWorld());
-    }
-    @Override
     public Organism child(Position position) {return new Turtle(position, getWorld());}
     @Override
     public void save(){
@@ -40,5 +35,9 @@ public class Turtle extends Animal
     @Override
     public Color getColor(){
         return Color.pink;
+    }
+    @Override
+    public boolean hasAvoided(Organism enemy){
+        return enemy.getStrength() < 5;
     }
 }

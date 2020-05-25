@@ -8,7 +8,7 @@ public abstract class Animal extends Organism
     private final int BASE_RANGE = 1;
     private final int BASE_CHANCE = 100;
     private int movementRange;
-    private double movementChanse;
+    private int movementChanse;
 
     public Animal(int strength, int iniciative, String symbol, Position position,
                   World world){
@@ -16,24 +16,20 @@ public abstract class Animal extends Organism
         this.movementRange = BASE_RANGE;
         this.movementChanse = BASE_CHANCE;
     }
-    public Animal(int age, int strength, int iniciative, String symbol, Position position, World world){
-        this(strength,iniciative,symbol,position,world);
-        this.setAge(age);
-    }
 
     public int getMovementRange() {return movementRange;}
-    public double getMovementChanse() {return movementChanse;}
+    public int getMovementChanse() {return movementChanse;}
 
     public void setMovementRange(int movementRange){
         this.movementRange= movementRange;
     }
-    public void setMovementChanse(double movementChanse){
+    public void setMovementChanse(int movementChanse){
         this.movementChanse = movementChanse;
     }
 
     private boolean isAbleToMove(){
         Random r = new Random();
-        return r.nextDouble() < movementChanse;
+        return r.nextInt(101) < movementChanse;
     }
 
     private boolean move(){
@@ -108,6 +104,10 @@ public abstract class Animal extends Organism
 
     @Override
     public boolean collision(Organism enemy){
+        if(hasAvoided(enemy)){
+            getWorld().getScreen().addAction(getWorld().getCommentator().announceAvoid(enemy,this));
+            return false;
+        }
         if(getStrength() > enemy.getStrength())
         {
             enemy.setAlive(false);

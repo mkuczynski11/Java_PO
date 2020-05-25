@@ -5,12 +5,13 @@ import life.game.my.solution.files.Position;
 import life.game.my.solution.files.World;
 
 import javax.swing.*;
-import javax.swing.border.Border;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 
-public class Screen implements ActionListener {
+public class Screen implements KeyListener {
     private static final int WIDTH = 1920;
     private static final int HEIGHT = 1020;
     private static final int SPACE = 10;
@@ -37,6 +38,10 @@ public class Screen implements ActionListener {
     private JButton bSaveGame;
     private JButton bLoadGame;
     private JButton[][] board;
+    private boolean isPressed;
+    private int humanX;
+    private int humanY;
+    public boolean running;
 
     public World getWorld() {
         return world;
@@ -44,8 +49,13 @@ public class Screen implements ActionListener {
 
     public Screen(World world) {
         this.world = world;
+        this.isPressed = false;
+        this.running = true;
+        this.humanX = 0;
+        this.humanY = 0;
         gameframe = new JFrame("Life game");
         gameframe.setLayout(new BorderLayout());
+        gameframe.addKeyListener(this);
         int x = world.getScreenX();
         int y = world.getScreenY();
 
@@ -74,22 +84,42 @@ public class Screen implements ActionListener {
         bExit.setBackground(Color.BLACK);
         bExit.setForeground(Color.white);
         bExit.setLayout(null);
-        bExit.addActionListener(this);
+        bExit.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                gameframe.dispose();
+            }
+        });
         this.bNextTurn = new JButton("Tura");
         bNextTurn.setBackground(Color.BLACK);
         bNextTurn.setForeground(Color.white);
         bNextTurn.setLayout(null);
-        bNextTurn.addActionListener(this);
+        bNextTurn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                getWorld().makeTurn();
+            }
+        });
         this.bSaveGame = new JButton("Zapisz");
         bSaveGame.setBackground(Color.BLACK);
         bSaveGame.setForeground(Color.white);
         bSaveGame.setLayout(null);
-        bSaveGame.addActionListener(this);
+        bSaveGame.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+            }
+        });
         this.bLoadGame = new JButton("Zaladuj");
         bLoadGame.setBackground(Color.BLACK);
         bLoadGame.setForeground(Color.white);
         bLoadGame.setLayout(null);
-        bLoadGame.addActionListener(this);
+        bLoadGame.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+            }
+        });
 
         menu.add(bExit);
         menu.add(bNextTurn);
@@ -121,20 +151,6 @@ public class Screen implements ActionListener {
         board[position.getY()][position.getX()].setText(symbol);
     }
 
-    @Override
-    public void actionPerformed(ActionEvent e) {
-        Object source = e.getSource();
-        if (source == bExit) {
-            gameframe.dispose();
-        } else if (source == bNextTurn) {
-            this.world.makeTurn();
-        } else if (source == bLoadGame) {
-
-        } else if (source == bSaveGame) {
-
-        }
-    }
-
     public void moveOrganism(Position position1, Position position2) {
         Color tmp = board[position1.getY()][position1.getX()].getBackground();
         String tmp_s = board[position1.getY()][position1.getX()].getText();
@@ -150,5 +166,50 @@ public class Screen implements ActionListener {
 
     public void clearLogs(){
         this.textArea.setText("Wydarzenia na planszy podczas trwania tury\n");
+    }
+
+    @Override
+    public void keyTyped(KeyEvent e) {
+
+    }
+
+    @Override
+    public void keyPressed(KeyEvent e) {
+        isPressed = true;
+        humanX = 0;
+        humanY = 0;
+        if(e.getKeyCode() == KeyEvent.VK_UP){
+            humanY = -1;
+        }
+        else if(e.getKeyCode() == KeyEvent.VK_DOWN){
+            humanY = 1;
+        }
+        else if(e.getKeyCode() == KeyEvent.VK_LEFT){
+            humanX = -1;
+        }
+        else if(e.getKeyCode() == KeyEvent.VK_RIGHT){
+            humanX = 1;
+        }
+    }
+
+    @Override
+    public void keyReleased(KeyEvent e) {
+
+    }
+
+    public boolean isPressed() {
+        return isPressed;
+    }
+
+    public void setPressed(boolean pressed) {
+        isPressed = pressed;
+    }
+
+    public int getHumanX() {
+        return humanX;
+    }
+
+    public int getHumanY() {
+        return humanY;
     }
 }

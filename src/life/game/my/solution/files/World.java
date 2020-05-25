@@ -5,6 +5,7 @@ import java.util.*;
 import life.game.my.solution.files.animals.*;
 import life.game.my.solution.files.gui.Screen;
 import life.game.my.solution.files.gui.Commentator;
+import life.game.my.solution.files.plants.*;
 
 public class World {
     private final int screenX;
@@ -44,17 +45,17 @@ public class World {
     }
 
     private void fillUpTheWorld(){
-       // fillUpHelper(define.CZLOWIEK_AMOUNT, define.SYMBOL_CZLOWIEK);
+        fillUpHelper(define.CZLOWIEK_AMOUNT, define.SYMBOL_CZLOWIEK);
         fillUpHelper(define.WILK_AMOUNT, define.SYMBOL_WILK);
         fillUpHelper(define.ZOLW_AMOUNT, define.SYMBOL_ZOLW);
         fillUpHelper(define.OWCA_AMOUNT, define.SYMBOL_OWCA);
         fillUpHelper(define.LIS_AMOUNT, define.SYMBOL_LIS);
         fillUpHelper(define.ANTYLOPA_AMOUNT, define.SYMBOL_ANTYLOPA);
-        /*fillUpHelper(define.TRAWA_AMOUNT, define.SYMBOL_TRAWA);
+        fillUpHelper(define.TRAWA_AMOUNT, define.SYMBOL_TRAWA);
         fillUpHelper(define.MLECZ_AMOUNT, define.SYMBOL_MLECZ);
         fillUpHelper(define.GUARANA_AMOUNT, define.SYMBOL_GUARANA);
         fillUpHelper(define.WILCZEJAGODY_AMOUNT, define.SYMBOL_WIKLCZEJAGODY);
-        fillUpHelper(define.BARSZCZSOSNOWSKIEGO_AMOUNT, define.SYMBOL_BARSZCZSOSNOWSKIEGO);*/
+        fillUpHelper(define.BARSZCZSOSNOWSKIEGO_AMOUNT, define.SYMBOL_BARSZCZSOSNOWSKIEGO);
         Collections.sort(organisms, new CustomComparator());
     }
     private void fillUpHelper(int amount, String symbol){
@@ -72,17 +73,22 @@ public class World {
             }
             Position p = new Position(x,y);
             if(symbol == define.SYMBOL_GROUND){board[y][x] = new Ground(p,this);}
-            //else if(symbol == define.SYMBOL_CZLOWIEK){}
+            else if(symbol == define.SYMBOL_CZLOWIEK){board[y][x] = new Human(p,this);}
             else if(symbol == define.SYMBOL_WILK){board[y][x] = new Wolf(p, this);}
             else if(symbol == define.SYMBOL_ZOLW){board[y][x] = new Turtle(p,this);}
             else if(symbol == define.SYMBOL_OWCA){board[y][x] = new Sheep(p,this); }
             else if(symbol == define.SYMBOL_LIS){board[y][x] = new Fox(p,this);}
             else if(symbol == define.SYMBOL_ANTYLOPA){board[y][x] = new Antelope(p,this); }
-            /*else if(symbol == define.SYMBOL_TRAWA){}
-            else if(symbol == define.SYMBOL_MLECZ){}
-            else if(symbol == define.SYMBOL_GUARANA){}
-            else if(symbol == define.SYMBOL_WIKLCZEJAGODY){}
-            else if(symbol == define.SYMBOL_BARSZCZSOSNOWSKIEGO){}*/
+            else if(symbol == define.SYMBOL_TRAWA){board[y][x] = new Grass(p,this);
+            }
+            else if(symbol == define.SYMBOL_MLECZ){board[y][x] = new Milt(p,this);
+            }
+            else if(symbol == define.SYMBOL_GUARANA){board[y][x] = new Guarana(p,this);
+            }
+            else if(symbol == define.SYMBOL_WIKLCZEJAGODY){board[y][x] = new DeadlyNightshade(p,this);
+            }
+            else if(symbol == define.SYMBOL_BARSZCZSOSNOWSKIEGO){board[y][x] = new SosnowskysHogweed(p, this);
+            }
             i++;
             organisms.add(board[p.getY()][p.getX()]);
             screen.addOrganism(board[p.getY()][p.getX()],p);
@@ -97,6 +103,10 @@ public class World {
 
     private void setTurn(int turn){
         this.turn = turn;
+    }
+
+    public startGame(){
+        while()
     }
 
     public void makeTurn(){
@@ -180,6 +190,7 @@ public class World {
         if(!(organism instanceof Ground)){
             toAdd.add(organism);
             board[organism.getPosition().getY()][organism.getPosition().getX()] = organism;
+            screen.addOrganism(organism,organism.getPosition());
         }
     }
 
@@ -196,7 +207,6 @@ public class World {
         organism.setParent(false);
         organism.setReady(true);
         organisms.add(organism);
-        screen.addOrganism(organism,organism.getPosition());
     }
 
     public void addToFix(Organism organism){

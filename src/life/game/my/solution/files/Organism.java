@@ -84,4 +84,8 @@ public abstract class Organism implements Creature
         return combinations.get(choice);
     }
 
+    public boolean hasAvoided(Organism enemy){
+        return false;
+    }
+
 }

@@ -15,9 +15,6 @@ public class Fox extends Animal
     public Fox(Position position, World world){
         super(LIS_SILA, LIS_INICJATYWA,world.define.SYMBOL_LIS,position, world);
     }
-    public Fox(int age, int strength, Position position, World world){
-        super(age,strength,LIS_INICJATYWA,world.define.SYMBOL_LIS,position, world);
-    }
 
     @Override
     public String getName(){
@@ -26,10 +23,6 @@ public class Fox extends Animal
     @Override
     public boolean isSameSpecies(Organism organism){
         return (organism instanceof Fox);
-    }
-    @Override
-    public Organism copy(Position position){
-        return new Fox(getAge(), getStrength(), position, getWorld());
     }
     @Override
     public Organism child(Position position) {return new Fox(position, getWorld());}

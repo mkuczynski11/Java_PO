@@ -25,10 +25,6 @@ public class Ground extends Organism
         return "Ground";
     }
     @Override
-    public Organism copy(Position position){
-        return new Ground(position, getWorld());
-    }
-    @Override
     public Organism child(Position position) {return new Ground(position, getWorld());}
     @Override
     public void save(){
