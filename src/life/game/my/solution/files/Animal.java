@@ -29,19 +29,21 @@ public abstract class Animal extends Organism
 
     private boolean isAbleToMove(){
         Random r = new Random();
-        return r.nextInt(101) < movementChanse;
+        boolean is = r.nextInt(101) < movementChanse;
+        if(!is) getWorld().getLogs().addLog(getWorld().getCommentator().announceMove(this,this.getPosition(),this.getPosition()));
+        return is;
     }
 
     private boolean move(){
         Position heading = this.generateRandomPosition(this.getPosition());
         if(heading.getX() == getPosition().getX() && heading.getY() == getPosition().getY()){
-            getWorld().getScreen().addAction(getWorld().getCommentator().announceMove(this,this.getPosition(),heading));
+            getWorld().getLogs().addLog(getWorld().getCommentator().announceMove(this,this.getPosition(),heading));
             return true;
         }
         Organism tmp = getWorld().getOrganism(heading);
         if(tmp instanceof Ground || !tmp.isAlive())
         {
-            getWorld().getScreen().addAction(getWorld().getCommentator().announceMove(this,this.getPosition(),heading));
+            getWorld().getLogs().addLog(getWorld().getCommentator().announceMove(this,this.getPosition(),heading));
             getWorld().moveOrganism(getPosition(), heading);
             return true;
         }
@@ -56,7 +58,6 @@ public abstract class Animal extends Organism
         else if (tmp.isAlive())
         {
             if(tmp.collision(this)){
-                getWorld().getScreen().addAction(getWorld().getCommentator().announceMove(this,this.getPosition(),heading));
                 getWorld().moveOrganism(getPosition(), heading);
             }
             return false;
@@ -81,7 +82,7 @@ public abstract class Animal extends Organism
                 getWorld().addToAdd(child);
                 getWorld().addToFix(this);
                 getWorld().addToFix(lover);
-                getWorld().getScreen().addAction(getWorld().getCommentator().announceBreed(this,lover,child));
+                getWorld().getLogs().addLog(getWorld().getCommentator().announceBreed(this,lover,child));
                 return;
             }
             combinations.remove(choice);
@@ -105,7 +106,7 @@ public abstract class Animal extends Organism
     @Override
     public boolean collision(Organism enemy){
         if(hasAvoided(enemy)){
-            getWorld().getScreen().addAction(getWorld().getCommentator().announceAvoid(enemy,this));
+            getWorld().getLogs().addLog(getWorld().getCommentator().announceAvoid(enemy,this));
             return false;
         }
         if(getStrength() > enemy.getStrength())
@@ -113,7 +114,7 @@ public abstract class Animal extends Organism
             enemy.setAlive(false);
             enemy.setReady(false);
             getWorld().addToKill(enemy);
-            getWorld().getScreen().addAction(getWorld().getCommentator().announceKill(this, enemy));
+            getWorld().getLogs().addLog(getWorld().getCommentator().announceKill(this, enemy));
             return false;
         }
         else
@@ -121,7 +122,7 @@ public abstract class Animal extends Organism
             setAlive(false);
             setReady(false);
             getWorld().addToKill(this);
-            getWorld().getScreen().addAction(getWorld().getCommentator().announceKill(enemy,this));
+            getWorld().getLogs().addLog(getWorld().getCommentator().announceKill(enemy, this));
             return true;
         }
     }

@@ -6,6 +6,7 @@ import life.game.my.solution.files.Position;
 import life.game.my.solution.files.World;
 
 import java.awt.*;
+import java.awt.event.KeyEvent;
 
 public class Human extends Animal
 {
@@ -36,7 +37,28 @@ public class Human extends Animal
     }
     @Override
     public Position generateRandomPosition(Position position){
-        Position p = new Position(position.getX(),position.getY());
-        return p;
+        int code = getWorld().getCurrentHumanKey();
+        getWorld().setCurrentHumanKey(-1);
+        if(code == KeyEvent.VK_UP){
+            if(position.getY() != 0){
+                return new Position(position.getX(),position.getY()-1);
+            }
+        }
+        else if (code == KeyEvent.VK_DOWN){
+            if(position.getY() != getWorld().getScreenY() - 1) {
+                return new Position(position.getX(), position.getY() + 1);
+            }
+        }
+        else if (code == KeyEvent.VK_LEFT){
+            if(position.getX() != 0){
+                return new Position(position.getX() - 1,position.getY());
+            }
+        }
+        else if (code == KeyEvent.VK_RIGHT){
+            if(position.getX() != getWorld().getScreenX() - 1) {
+                return new Position(position.getX() + 1 , position.getY());
+            }
+        }
+        return super.generateRandomPosition(position);
     }
 }

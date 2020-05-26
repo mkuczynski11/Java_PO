@@ -3,9 +3,10 @@ package life.game.my.solution.files;
 import java.util.*;
 
 import life.game.my.solution.files.animals.*;
-import life.game.my.solution.files.gui.Screen;
-import life.game.my.solution.files.gui.Commentator;
+import life.game.my.solution.files.gui.*;
 import life.game.my.solution.files.plants.*;
+
+import javax.swing.*;
 
 public class World {
     private final int screenX;
@@ -20,6 +21,8 @@ public class World {
     private Commentator commentator;
     public DEFINE define;
     private boolean running;
+    private Log logs;
+    private int currentHumanKey;
 
     public World(){
         this(20,20);
@@ -43,6 +46,8 @@ public class World {
         this.define = new DEFINE();
         this.commentator = new Commentator();
         this.running = false;
+        this.logs = new Log();
+        this.currentHumanKey = 0;
     }
 
     public void launch(){
@@ -97,7 +102,6 @@ public class World {
             }
             i++;
             organisms.add(board[p.getY()][p.getX()]);
-            screen.addOrganism(board[p.getY()][p.getX()],p);
         }
     }
 
@@ -107,12 +111,23 @@ public class World {
     public Commentator getCommentator() {return commentator;}
     public Screen getScreen() {return screen;}
 
+    public int getCurrentHumanKey() {
+        return currentHumanKey;
+    }
+
+    public Log getLogs() {
+        return logs;
+    }
+
     private void setTurn(int turn){
         this.turn = turn;
     }
 
+    public void setCurrentHumanKey(int currentHumanKey) {
+        this.currentHumanKey = currentHumanKey;
+    }
+
     public void makeTurn(){
-        screen.clearLogs();
         for(Organism o : organisms)
         {
             o.action();
@@ -154,7 +169,6 @@ public class World {
             }
             if (moves == max) break;
         }
-        screen.moveOrganism(from,to);
     }
 
     public void addToKill(Organism organism){
@@ -164,6 +178,7 @@ public class World {
     }
 
     private void killOrganisms(){
+        int x = toKill.size();
         while(true)
         {
             if(toKill.size() == 0) break;
@@ -181,7 +196,6 @@ public class World {
                 Organism tmp = new Ground(organism.getPosition(), organism.getWorld());
                 board[organism.getPosition().getY()][organism.getPosition().getX()] = tmp;
                 organisms.remove(i);
-                screen.addOrganism(tmp,tmp.getPosition());
                 break;
             }
             i++;
@@ -192,7 +206,6 @@ public class World {
         if(!(organism instanceof Ground)){
             toAdd.add(organism);
             board[organism.getPosition().getY()][organism.getPosition().getX()] = organism;
-            screen.addOrganism(organism,organism.getPosition());
         }
     }
 

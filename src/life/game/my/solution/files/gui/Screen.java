@@ -1,81 +1,89 @@
 package life.game.my.solution.files.gui;
 
-import life.game.my.solution.files.Organism;
-import life.game.my.solution.files.Position;
 import life.game.my.solution.files.World;
 
 import javax.swing.*;
-import javax.swing.border.Border;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
 
-public class Screen extends JFrame
+public class Screen
 {
-    private World world;
-    private GamePanel gamePanel;
-    private Menu menu;
-    private EventLog eventlog;
-    private JButton[][] board;
-
-    public World getWorld() {
-        return world;
-    }
     public Screen(World world){
-        this.world = world;
-        this.setTitle("Life game");
-        this.setLayout(new BorderLayout());
-        int x = getWorld().getScreenX();
-        int y = getWorld().getScreenY();
+        EventQueue.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                /*try {
+                    UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+                } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException ex) {
+                }*/
+                JFrame frame = new JFrame("Life game");
+                frame.setLayout(new BorderLayout());
+                int x = world.getScreenX();
+                int y = world.getScreenY();
 
-        gamePanel = new GamePanel(y,x);
-        add(gamePanel,BorderLayout.CENTER);
+                GamePanel gamePanel = new GamePanel(y,x, world);
+                frame.getContentPane().add(gamePanel,BorderLayout.CENTER);
 
-        board = new JButton[y][x];
+                EventLog eventlog = new EventLog(frame);
+                frame.getContentPane().add(eventlog, BorderLayout.EAST);
 
-        for (int i = 0; i < y; i++) {
-            for (int j = 0; j < x; j++) {
-                board[i][j] = new JButton(getWorld().define.SYMBOL_GROUND);
-                board[i][j].setBackground(Color.LIGHT_GRAY);
-                gamePanel.add(board[i][j]);
+                JPanel menu = new JPanel();
+                menu.setLayout(new GridLayout(4,1));
+                JButton bExit = new JButton("Exit");
+                bExit.setBackground(Color.BLACK);
+                bExit.setForeground(Color.white);
+                bExit.setLayout(null);
+                bExit.addActionListener(new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        frame.dispose();
+                    }
+                });
+                JButton bNextTurn = new JButton("Tura");
+                bNextTurn.setBackground(Color.BLACK);
+                bNextTurn.setForeground(Color.white);
+                bNextTurn.setLayout(null);
+                bNextTurn.addActionListener(new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        world.makeTurn();
+                        gamePanel.changeBoard(world);
+                        eventlog.changeLogs(world);
+                    }
+                });
+
+                JButton bSaveGame = new JButton("Zapisz");
+                bSaveGame.setBackground(Color.BLACK);
+                bSaveGame.setForeground(Color.white);
+                bSaveGame.setLayout(null);
+                bSaveGame.addActionListener(new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                    }
+                });
+
+                JButton bLoadGame = new JButton("Zaladuj");
+                bLoadGame.setBackground(Color.BLACK);
+                bLoadGame.setForeground(Color.white);
+                bLoadGame.setLayout(null);
+                bLoadGame.addActionListener(new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+
+                    }
+                });
+                menu.add(bExit);
+                menu.add(bNextTurn);
+                menu.add(bSaveGame);
+                menu.add(bLoadGame);
+                frame.add(menu, BorderLayout.WEST);
+
+                frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                frame.setSize(1920, 1080);
+                frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
+                frame.setVisible(true);
             }
-        }
-
-        menu = new Menu(this);
-        add(menu, BorderLayout.WEST);
-
-        eventlog = new EventLog(this);
-        add(eventlog, BorderLayout.EAST);
-
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.setSize(1920, 1080);
-        this.setExtendedState(JFrame.MAXIMIZED_BOTH);
-        this.setVisible(true);
-    }
-
-    public void addOrganism(Organism organism, Position position) {
-        Color c = organism.getColor();
-        String symbol = organism.getSymbol();
-        board[position.getY()][position.getX()].setBackground(c);
-        board[position.getY()][position.getX()].setText(symbol);
-    }
-
-    public void moveOrganism(Position position1, Position position2) {
-        Color tmp = board[position1.getY()][position1.getX()].getBackground();
-        String tmp_s = board[position1.getY()][position1.getX()].getText();
-        board[position1.getY()][position1.getX()].setBackground(board[position2.getY()][position2.getX()].getBackground());
-        board[position1.getY()][position1.getX()].setText(board[position2.getY()][position2.getX()].getText());
-        board[position2.getY()][position2.getX()].setBackground(tmp);
-        board[position2.getY()][position2.getX()].setText(tmp_s);
-    }
-
-    public void clearLogs(){
-        eventlog.getTextArea().setText("Wydarzenia na planszy podczas trwania tury\n");
-    }
-
-    public void addAction(String message) {
-        this.eventlog.getTextArea().append(message);
+        });
     }
 }

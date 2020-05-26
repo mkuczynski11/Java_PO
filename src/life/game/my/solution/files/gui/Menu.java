@@ -1,5 +1,7 @@
 package life.game.my.solution.files.gui;
 
+import life.game.my.solution.files.World;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -11,10 +13,8 @@ public class Menu extends JPanel
     private JButton bNextTurn;
     private JButton bSaveGame;
     private JButton bLoadGame;
-    private Screen screen;
 
-    public Menu(Screen screen){
-        this.screen = screen;
+    public Menu(JFrame frame, GamePanel gamePanel, EventLog eventLog,JButton[][] board, World world){
         setLayout(new GridLayout(4,1));
 
         this.bExit = new JButton("Exit");
@@ -24,7 +24,7 @@ public class Menu extends JPanel
         bExit.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                screen.dispose();
+                frame.dispose();
             }
         });
 
@@ -35,7 +35,9 @@ public class Menu extends JPanel
         bNextTurn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                screen.getWorld().makeTurn();
+                world.makeTurn();
+                frame.remove(gamePanel);
+                frame.add(new GamePanel(world.getScreenY(), world.getScreenX(), world));
             }
         });
 
@@ -46,7 +48,6 @@ public class Menu extends JPanel
         bSaveGame.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
             }
         });
 

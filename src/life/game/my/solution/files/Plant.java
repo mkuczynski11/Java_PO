@@ -48,6 +48,7 @@ public abstract class Plant extends Organism
                 }
                 i++;
             }
+            getWorld().getLogs().addLog(getWorld().getCommentator().announceSeed(this, this));
         }
     }
 
@@ -72,7 +73,7 @@ public abstract class Plant extends Organism
                 child.setParent(true);
                 getWorld().addToAdd(child);
                 getWorld().addToFix(this);
-                getWorld().getScreen().addAction(getWorld().getCommentator().announceSeed(this,child));
+                getWorld().getLogs().addLog(getWorld().getCommentator().announceSeed(this,child));
                 return;
             }
             combinations.remove(choice);
@@ -86,7 +87,7 @@ public abstract class Plant extends Organism
             enemy.setAlive(false);
             enemy.setReady(false);
             getWorld().addToKill(enemy);
-            getWorld().getScreen().addAction(getWorld().getCommentator().announceKill(this, enemy));
+            getWorld().getLogs().addLog(getWorld().getCommentator().announceKill(this, enemy));
             return false;
         }
         else
@@ -94,7 +95,7 @@ public abstract class Plant extends Organism
             setAlive(false);
             setReady(false);
             getWorld().addToKill(this);
-            /////////////////////////////////////////////////////getWorld().getScreen().addAction(getWorld().getCommentator().announceConsume(enemy, this));
+            getWorld().getLogs().addLog(getWorld().getCommentator().announceConsume(enemy, this));
             return true;
         }
     }
