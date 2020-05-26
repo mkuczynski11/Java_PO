@@ -47,7 +47,7 @@ public class Antelope extends Animal
                 Organism tmp = getWorld().getOrganism(combinations.get(choice));
                 if(tmp instanceof Ground){
                     getWorld().moveOrganism(getPosition(),combinations.get(choice));
-                    getWorld().getScreen().addAction(getWorld().getCommentator().announceRunaway(enemy,this));
+                    /////////////////////////////////////////////////////getWorld().getScreen().addAction(getWorld().getCommentator().announceRunaway(enemy,this));
                     return true;
                 }
                 combinations.remove(choice);

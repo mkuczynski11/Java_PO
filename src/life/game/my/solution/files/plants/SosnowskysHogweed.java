@@ -34,7 +34,7 @@ public class SosnowskysHogweed extends Plant
         enemy.setAlive(false);
         enemy.setReady(false);
         getWorld().addToKill(enemy);
-        getWorld().getScreen().addAction(getWorld().getCommentator().announceConsume(enemy, this));
+        /////////////////////////////////////////////////////getWorld().getScreen().addAction(getWorld().getCommentator().announceConsume(enemy, this));
         setAlive(false);
         setReady(false);
         getWorld().addToKill(this);
@@ -51,7 +51,7 @@ public class SosnowskysHogweed extends Plant
                     tmp.setAlive(false);
                     tmp.setReady(false);
                     getWorld().addToKill(tmp);
-                    getWorld().getScreen().addAction(getWorld().getCommentator().announceKill(this, tmp));
+                    ///////////////////////////////////////////////////// getWorld().getScreen().addAction(getWorld().getCommentator().announceKill(this, tmp));
                 }
                 combinations.remove(0);
             }

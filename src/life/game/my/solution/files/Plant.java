@@ -94,7 +94,7 @@ public abstract class Plant extends Organism
             setAlive(false);
             setReady(false);
             getWorld().addToKill(this);
-            getWorld().getScreen().addAction(getWorld().getCommentator().announceConsume(enemy, this));
+            /////////////////////////////////////////////////////getWorld().getScreen().addAction(getWorld().getCommentator().announceConsume(enemy, this));
             return true;
         }
     }

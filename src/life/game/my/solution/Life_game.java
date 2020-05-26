@@ -15,5 +15,6 @@ public class Life_game {
         int y = scanner.nextInt();
 
         World world = new World(x,y);
+        world.launch();
     }
 }

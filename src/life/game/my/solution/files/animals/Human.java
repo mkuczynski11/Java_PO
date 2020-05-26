@@ -6,8 +6,6 @@ import life.game.my.solution.files.Position;
 import life.game.my.solution.files.World;
 
 import java.awt.*;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
 
 public class Human extends Animal
 {
@@ -38,16 +36,7 @@ public class Human extends Animal
     }
     @Override
     public Position generateRandomPosition(Position position){
-        getWorld().getScreen().addAction("Nacisnij w jakim kierunku chcesz się poruszyć(strzałka na klawiaturze)");
         Position p = new Position(position.getX(),position.getY());
-        int j =0;
-        //while(!getWorld().getScreen().isPressed())
-        //{
-            //getWorld().getScreen().addAction(((Integer) j).toString());
-       // }
-        getWorld().getScreen().setPressed(false);
-        p.setX(p.getX()+getWorld().getScreen().getHumanX());
-        p.setY(p.getY()+getWorld().getScreen().getHumanY());
         return p;
     }
 }

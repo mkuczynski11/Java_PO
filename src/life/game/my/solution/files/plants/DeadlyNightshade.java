@@ -36,7 +36,7 @@ public class DeadlyNightshade extends Plant
         enemy.setAlive(false);
         enemy.setReady(false);
         getWorld().addToKill(enemy);
-        getWorld().getScreen().addAction(getWorld().getCommentator().announceConsume(enemy, this));
+        /////////////////////////////////////////////////////getWorld().getScreen().addAction(getWorld().getCommentator().announceConsume(enemy, this));
         setAlive(false);
         setReady(false);
         getWorld().addToKill(this);

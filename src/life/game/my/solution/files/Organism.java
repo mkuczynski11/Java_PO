@@ -1,9 +1,10 @@
 package life.game.my.solution.files;
 
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.Random;
 
-public abstract class Organism implements Creature
+public abstract class Organism
 {
     private int age;
     private int strength;
@@ -88,4 +89,10 @@ public abstract class Organism implements Creature
         return false;
     }
 
+    public abstract void action();
+    public abstract boolean collision(Organism enemy);
+    public abstract String getName();
+    public abstract Organism child(Position position);
+    public abstract void save();
+    public abstract Color getColor();
 }

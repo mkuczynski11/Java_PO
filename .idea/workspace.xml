@@ -2,38 +2,27 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a1c890cd-0a27-40b2-8571-d8a1632eb4d2" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/life/game/my/solution/files/Plant.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/life/game/my/solution/files/animals/Human.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/life/game/my/solution/files/plants/DeadlyNightshade.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/life/game/my/solution/files/plants/Grass.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/life/game/my/solution/files/plants/Guarana.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/life/game/my/solution/files/plants/Milt.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/life/game/my/solution/files/plants/SosnowskysHogweed.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/life/game/my/solution/files/gui/EventLog.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/life/game/my/solution/files/gui/GamePanel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/life/game/my/solution/files/gui/Menu.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Life_game/life/game/my/solution/files/Animal.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Life_game/life/game/my/solution/files/Animal.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Life_game/life/game/my/solution/files/Creature.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Life_game/life/game/my/solution/files/Creature.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Life_game/life/game/my/solution/files/Ground.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Life_game/life/game/my/solution/files/Ground.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Life_game/life/game/my/solution/Life_game.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Life_game/life/game/my/solution/Life_game.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Life_game/life/game/my/solution/files/Creature.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Life_game/life/game/my/solution/files/Organism.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Life_game/life/game/my/solution/files/Organism.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Life_game/life/game/my/solution/files/Position.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Life_game/life/game/my/solution/files/Position.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Life_game/life/game/my/solution/files/World.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Life_game/life/game/my/solution/files/World.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Life_game/life/game/my/solution/files/animals/Antelope.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Life_game/life/game/my/solution/files/animals/Antelope.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Life_game/life/game/my/solution/files/animals/Fox.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Life_game/life/game/my/solution/files/animals/Fox.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Life_game/life/game/my/solution/files/animals/Sheep.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Life_game/life/game/my/solution/files/animals/Sheep.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Life_game/life/game/my/solution/files/animals/Turtle.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Life_game/life/game/my/solution/files/animals/Turtle.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Life_game/life/game/my/solution/files/animals/Wolf.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Life_game/life/game/my/solution/files/animals/Wolf.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Life_game/life/game/my/solution/files/gui/Screen.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Life_game/life/game/my/solution/files/gui/Screen.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/life/game/my/solution/files/Animal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/life/game/my/solution/files/Animal.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/life/game/my/solution/files/Creature.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/life/game/my/solution/files/Creature.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/life/game/my/solution/files/Ground.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/life/game/my/solution/files/Ground.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/life/game/my/solution/Life_game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/life/game/my/solution/Life_game.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/life/game/my/solution/files/Creature.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/life/game/my/solution/files/Organism.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/life/game/my/solution/files/Organism.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/life/game/my/solution/files/Plant.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/life/game/my/solution/files/Plant.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/life/game/my/solution/files/World.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/life/game/my/solution/files/World.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/life/game/my/solution/files/animals/Antelope.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/life/game/my/solution/files/animals/Antelope.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/life/game/my/solution/files/animals/Fox.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/life/game/my/solution/files/animals/Fox.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/life/game/my/solution/files/animals/Sheep.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/life/game/my/solution/files/animals/Sheep.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/life/game/my/solution/files/animals/Turtle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/life/game/my/solution/files/animals/Turtle.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/life/game/my/solution/files/animals/Wolf.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/life/game/my/solution/files/animals/Wolf.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/life/game/my/solution/files/gui/Commentator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/life/game/my/solution/files/gui/Commentator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/life/game/my/solution/files/animals/Human.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/life/game/my/solution/files/animals/Human.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/life/game/my/solution/files/gui/Screen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/life/game/my/solution/files/gui/Screen.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/life/game/my/solution/files/plants/DeadlyNightshade.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/life/game/my/solution/files/plants/DeadlyNightshade.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/life/game/my/solution/files/plants/Guarana.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/life/game/my/solution/files/plants/Guarana.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/life/game/my/solution/files/plants/SosnowskysHogweed.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/life/game/my/solution/files/plants/SosnowskysHogweed.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -128,7 +117,14 @@
       <option name="project" value="LOCAL" />
       <updated>1590408607678</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Working screen layout + breed complete. Also fox implemented correctly.">
+      <created>1590436483546</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1590436483546</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -161,50 +157,54 @@
     <option name="LAST_COMMIT_MESSAGE" value="Working screen layout + breed complete. Also fox implemented correctly." />
   </component>
   <component name="WindowStateProjectService">
-    <state x="765" y="229" key="#com.intellij.ide.util.MemberChooser" timestamp="1590434312990">
+    <state x="765" y="229" key="#com.intellij.ide.util.MemberChooser" timestamp="1590484648485">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="765" y="229" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1590434312990" />
-    <state x="614" y="114" key="CommitChangelistDialog2" timestamp="1590408605514">
+    <state x="765" y="229" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1590484648485" />
+    <state x="756" y="405" width="407" height="237" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1590483186064">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="614" y="114" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1590408605514" />
+    <state x="756" y="405" width="407" height="237" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.0.1920.1040@0.0.1920.1040" timestamp="1590483186064" />
+    <state x="614" y="114" key="CommitChangelistDialog2" timestamp="1590436480182">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="614" y="114" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1590436480182" />
     <state x="1220" y="275" key="FileChooserDialogImpl" timestamp="1590401214427">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="1220" y="275" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1590401214427" />
-    <state width="958" height="286" key="GridCell.Tab.0.bottom" timestamp="1590436319574">
+    <state width="1921" height="286" key="GridCell.Tab.0.bottom" timestamp="1590490861417">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="958" height="286" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1590436319574" />
-    <state width="958" height="286" key="GridCell.Tab.0.center" timestamp="1590436319574">
+    <state width="1921" height="286" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1590490861417" />
+    <state width="1921" height="286" key="GridCell.Tab.0.center" timestamp="1590490861417">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="958" height="286" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1590436319574" />
-    <state width="958" height="286" key="GridCell.Tab.0.left" timestamp="1590436319574">
+    <state width="1921" height="286" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1590490861417" />
+    <state width="1921" height="286" key="GridCell.Tab.0.left" timestamp="1590490861417">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="958" height="286" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1590436319574" />
-    <state width="958" height="286" key="GridCell.Tab.0.right" timestamp="1590436319574">
+    <state width="1921" height="286" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1590490861417" />
+    <state width="1921" height="286" key="GridCell.Tab.0.right" timestamp="1590490861417">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="958" height="286" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1590436319574" />
-    <state width="958" height="358" key="GridCell.Tab.1.bottom" timestamp="1590436270774">
+    <state width="1921" height="286" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1590490861417" />
+    <state width="1921" height="354" key="GridCell.Tab.1.bottom" timestamp="1590487350016">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="958" height="358" key="GridCell.Tab.1.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1590436270774" />
-    <state width="958" height="358" key="GridCell.Tab.1.center" timestamp="1590436270774">
+    <state width="1921" height="354" key="GridCell.Tab.1.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1590487350016" />
+    <state width="1921" height="354" key="GridCell.Tab.1.center" timestamp="1590487350016">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="958" height="358" key="GridCell.Tab.1.center/0.0.1920.1040@0.0.1920.1040" timestamp="1590436270774" />
-    <state width="958" height="358" key="GridCell.Tab.1.left" timestamp="1590436270774">
+    <state width="1921" height="354" key="GridCell.Tab.1.center/0.0.1920.1040@0.0.1920.1040" timestamp="1590487350016" />
+    <state width="1921" height="354" key="GridCell.Tab.1.left" timestamp="1590487350016">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="958" height="358" key="GridCell.Tab.1.left/0.0.1920.1040@0.0.1920.1040" timestamp="1590436270774" />
-    <state width="958" height="358" key="GridCell.Tab.1.right" timestamp="1590436270774">
+    <state width="1921" height="354" key="GridCell.Tab.1.left/0.0.1920.1040@0.0.1920.1040" timestamp="1590487350016" />
+    <state width="1921" height="354" key="GridCell.Tab.1.right" timestamp="1590487350016">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="958" height="358" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1590436270774" />
+    <state width="1921" height="354" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1590487350016" />
     <state x="806" y="242" key="RollbackChangesDialog" timestamp="1590315111594">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -213,14 +213,14 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="846" y="437" key="VCS.EditChangelistDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1590316081534" />
-    <state x="908" y="379" key="Vcs.Push.Dialog.v2" timestamp="1590408612917">
+    <state x="908" y="379" key="Vcs.Push.Dialog.v2" timestamp="1590436485271">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="908" y="379" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1590408612917" />
-    <state x="0" y="0" key="com.intellij.ide.util.TipDialog" timestamp="1590399079283">
+    <state x="908" y="379" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1590436485271" />
+    <state x="0" y="0" key="com.intellij.ide.util.TipDialog" timestamp="1590482836932">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="0" y="0" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1590399079283" />
+    <state x="0" y="0" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1590482836932" />
     <state x="769" y="437" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1590315065447">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -243,30 +243,6 @@
     <state x="1103" y="229" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1590432146197" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/life/game/my/solution/files/animals/Human.java</url>
-          <line>43</line>
-          <option name="timeStamp" value="108" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/life/game/my/solution/files/animals/Human.java</url>
-          <line>45</line>
-          <option name="timeStamp" value="109" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/life/game/my/solution/files/animals/Human.java</url>
-          <line>48</line>
-          <option name="timeStamp" value="110" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/life/game/my/solution/files/World.java</url>
-          <line>115</line>
-          <option name="timeStamp" value="111" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
     <watches-manager>
       <configuration name="Application">
         <watch expression="board[from.getY()][from.getX()]" />
@@ -274,7 +250,6 @@
         <watch expression="organism1" />
         <watch expression="organism2" />
         <watch expression="board[5][0]" language="JAVA" />
-        <watch expression="" />
         <watch expression="board" language="JAVA" />
         <watch expression="r.nextInt(101)" language="JAVA" />
       </configuration>

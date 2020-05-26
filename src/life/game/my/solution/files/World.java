@@ -19,6 +19,7 @@ public class World {
     private Screen screen;
     private Commentator commentator;
     public DEFINE define;
+    private boolean running;
 
     public World(){
         this(20,20);
@@ -41,7 +42,12 @@ public class World {
         this.screen = new Screen(this);
         this.define = new DEFINE();
         this.commentator = new Commentator();
+        this.running = false;
+    }
+
+    public void launch(){
         fillUpTheWorld();
+        this.running = true;
     }
 
     private void fillUpTheWorld(){
@@ -103,10 +109,6 @@ public class World {
 
     private void setTurn(int turn){
         this.turn = turn;
-    }
-
-    public startGame(){
-        while()
     }
 
     public void makeTurn(){
