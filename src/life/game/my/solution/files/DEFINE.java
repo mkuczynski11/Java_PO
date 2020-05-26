@@ -8,6 +8,7 @@ public class DEFINE
     public static final String SYMBOL_LIS = "L";
     public static final String SYMBOL_ZOLW = "Z";
     public static final String SYMBOL_ANTYLOPA = "A";
+    public static final String SYMBOL_CYBEROWCA = "c";
     public static final String SYMBOL_CZLOWIEK = "C";
     public static final String SYMBOL_TRAWA = "T";
     public static final String SYMBOL_MLECZ = "M";
@@ -20,6 +21,7 @@ public class DEFINE
     public static final int LIS_AMOUNT = 4;
     public static final int ZOLW_AMOUNT = 4;
     public static final int ANTYLOPA_AMOUNT = 4;
+    public static final int CYBEROWCA_AMOUNT = 3;
     public static final int TRAWA_AMOUNT = 3;
     public static final int MLECZ_AMOUNT = 3;
     public static final int GUARANA_AMOUNT = 3;

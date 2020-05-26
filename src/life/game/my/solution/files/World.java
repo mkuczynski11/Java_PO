@@ -62,6 +62,7 @@ public class World {
         fillUpHelper(define.OWCA_AMOUNT, define.SYMBOL_OWCA);
         fillUpHelper(define.LIS_AMOUNT, define.SYMBOL_LIS);
         fillUpHelper(define.ANTYLOPA_AMOUNT, define.SYMBOL_ANTYLOPA);
+        fillUpHelper(define.CYBEROWCA_AMOUNT, define.SYMBOL_CYBEROWCA);
         fillUpHelper(define.TRAWA_AMOUNT, define.SYMBOL_TRAWA);
         fillUpHelper(define.MLECZ_AMOUNT, define.SYMBOL_MLECZ);
         fillUpHelper(define.GUARANA_AMOUNT, define.SYMBOL_GUARANA);
@@ -90,6 +91,7 @@ public class World {
             else if(symbol == define.SYMBOL_OWCA){board[y][x] = new Sheep(p,this); }
             else if(symbol == define.SYMBOL_LIS){board[y][x] = new Fox(p,this);}
             else if(symbol == define.SYMBOL_ANTYLOPA){board[y][x] = new Antelope(p,this); }
+            else if(symbol == define.SYMBOL_CYBEROWCA){board[y][x] = new CyberSheep(p,this); }
             else if(symbol == define.SYMBOL_TRAWA){board[y][x] = new Grass(p,this);
             }
             else if(symbol == define.SYMBOL_MLECZ){board[y][x] = new Milt(p,this);

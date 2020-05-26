@@ -1,6 +1,7 @@
 package life.game.my.solution.files.plants;
 
 import life.game.my.solution.files.*;
+import life.game.my.solution.files.animals.CyberSheep;
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -31,13 +32,16 @@ public class SosnowskysHogweed extends Plant
     }
     @Override
     public boolean collision(Organism enemy){
-        enemy.setAlive(false);
-        enemy.setReady(false);
-        getWorld().addToKill(enemy);
-        /////////////////////////////////////////////////////getWorld().getScreen().addAction(getWorld().getCommentator().announceConsume(enemy, this));
+        if(!(enemy instanceof CyberSheep)) {
+            enemy.setAlive(false);
+            enemy.setReady(false);
+            getWorld().addToKill(enemy);
+        }
+        getWorld().getLogs().addLog(getWorld().getCommentator().announceConsume(enemy, this));
         setAlive(false);
         setReady(false);
         getWorld().addToKill(this);
+        if(enemy instanceof CyberSheep) return true;
         return false;
     }
     @Override
@@ -47,11 +51,11 @@ public class SosnowskysHogweed extends Plant
             while (true) {
                 if (combinations.size() == 0) break;
                 Organism tmp = getWorld().getOrganism(combinations.get(0));
-                if (tmp instanceof Animal) {
+                if (tmp instanceof Animal && !(tmp instanceof CyberSheep)) {
                     tmp.setAlive(false);
                     tmp.setReady(false);
                     getWorld().addToKill(tmp);
-                    ///////////////////////////////////////////////////// getWorld().getScreen().addAction(getWorld().getCommentator().announceKill(this, tmp));
+                    getWorld().getLogs().addLog(getWorld().getCommentator().announceKill(this, tmp));
                 }
                 combinations.remove(0);
             }
