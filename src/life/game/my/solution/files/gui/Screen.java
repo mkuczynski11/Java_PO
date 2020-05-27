@@ -29,7 +29,7 @@ public class Screen
                 frame.getContentPane().add(eventlog, BorderLayout.EAST);
 
                 JPanel menu = new JPanel();
-                menu.setLayout(new GridLayout(4,1));
+                menu.setLayout(new GridLayout(5,1));
                 JButton bExit = new JButton("Exit");
                 bExit.setBackground(Color.BLACK);
                 bExit.setForeground(Color.white);
@@ -50,6 +50,17 @@ public class Screen
                         world.makeTurn();
                         gamePanel.changeBoard(world);
                         eventlog.changeLogs(world);
+                    }
+                });
+
+                JButton bUseAbility = new JButton("Ability");
+                bUseAbility.setBackground(Color.BLACK);
+                bUseAbility.setForeground(Color.white);
+                bUseAbility.setLayout(null);
+                bUseAbility.addActionListener(new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        world.setUseAbility(true);
                     }
                 });
 
@@ -75,6 +86,7 @@ public class Screen
                 });
                 menu.add(bExit);
                 menu.add(bNextTurn);
+                menu.add(bUseAbility);
                 menu.add(bSaveGame);
                 menu.add(bLoadGame);
                 frame.add(menu, BorderLayout.WEST);

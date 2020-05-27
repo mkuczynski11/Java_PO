@@ -48,7 +48,6 @@ public abstract class Plant extends Organism
                 }
                 i++;
             }
-            getWorld().getLogs().addLog(getWorld().getCommentator().announceSeed(this, this));
         }
     }
 
@@ -66,7 +65,7 @@ public abstract class Plant extends Organism
             int choice = r.nextInt(combinations.size());
             Position p = combinations.get(choice);
             Organism tmp = getWorld().getOrganism(p);
-            if(tmp instanceof Ground || !tmp.isAlive())
+            if(tmp instanceof Ground || !tmp.isAlive() && (p.getX() != getPosition().getX() && p.getY() != getPosition().getY()))
             {
                 Organism child = this.child(p);
                 child.setReady(false);

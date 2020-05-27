@@ -51,7 +51,7 @@ public class SosnowskysHogweed extends Plant
             while (true) {
                 if (combinations.size() == 0) break;
                 Organism tmp = getWorld().getOrganism(combinations.get(0));
-                if (tmp instanceof Animal && !(tmp instanceof CyberSheep)) {
+                if (tmp instanceof Animal && !(tmp instanceof CyberSheep) && tmp.isAlive()) {
                     tmp.setAlive(false);
                     tmp.setReady(false);
                     getWorld().addToKill(tmp);

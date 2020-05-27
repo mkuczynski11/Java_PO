@@ -45,9 +45,9 @@ public class Antelope extends Animal
                 if(combinations.size() == 0) break;
                 int choice = r.nextInt(combinations.size());
                 Organism tmp = getWorld().getOrganism(combinations.get(choice));
-                if(tmp instanceof Ground){
+                if(tmp instanceof Ground || !(tmp.isAlive())){
                     getWorld().moveOrganism(getPosition(),combinations.get(choice));
-                    /////////////////////////////////////////////////////getWorld().getScreen().addAction(getWorld().getCommentator().announceRunaway(enemy,this));
+                    getWorld().getLogs().addLog(getWorld().getCommentator().announceRunaway(enemy,this));
                     return true;
                 }
                 combinations.remove(choice);

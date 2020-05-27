@@ -6,7 +6,6 @@ import life.game.my.solution.files.animals.*;
 import life.game.my.solution.files.gui.*;
 import life.game.my.solution.files.plants.*;
 
-import javax.swing.*;
 
 public class World {
     private final int screenX;
@@ -23,6 +22,7 @@ public class World {
     private boolean running;
     private Log logs;
     private int currentHumanKey;
+    private boolean useAbility;
 
     public World(){
         this(20,20);
@@ -62,12 +62,12 @@ public class World {
         fillUpHelper(define.OWCA_AMOUNT, define.SYMBOL_OWCA);
         fillUpHelper(define.LIS_AMOUNT, define.SYMBOL_LIS);
         fillUpHelper(define.ANTYLOPA_AMOUNT, define.SYMBOL_ANTYLOPA);
-        fillUpHelper(define.CYBEROWCA_AMOUNT, define.SYMBOL_CYBEROWCA);
+        //fillUpHelper(define.CYBEROWCA_AMOUNT, define.SYMBOL_CYBEROWCA);
         fillUpHelper(define.TRAWA_AMOUNT, define.SYMBOL_TRAWA);
         fillUpHelper(define.MLECZ_AMOUNT, define.SYMBOL_MLECZ);
         fillUpHelper(define.GUARANA_AMOUNT, define.SYMBOL_GUARANA);
         fillUpHelper(define.WILCZEJAGODY_AMOUNT, define.SYMBOL_WIKLCZEJAGODY);
-        fillUpHelper(define.BARSZCZSOSNOWSKIEGO_AMOUNT, define.SYMBOL_BARSZCZSOSNOWSKIEGO);
+        //fillUpHelper(define.BARSZCZSOSNOWSKIEGO_AMOUNT, define.SYMBOL_BARSZCZSOSNOWSKIEGO);
         Collections.sort(organisms, new CustomComparator());
     }
     private void fillUpHelper(int amount, String symbol){
@@ -121,12 +121,20 @@ public class World {
         return logs;
     }
 
+    public boolean isUseAbility() {
+        return useAbility;
+    }
+
     private void setTurn(int turn){
         this.turn = turn;
     }
 
     public void setCurrentHumanKey(int currentHumanKey) {
         this.currentHumanKey = currentHumanKey;
+    }
+
+    public void setUseAbility(boolean useAbility) {
+        this.useAbility = useAbility;
     }
 
     public void makeTurn(){
@@ -154,23 +162,49 @@ public class World {
         Organism tmp_to = board[to.getY()][to.getX()];
         board[from.getY()][from.getX()] = tmp_to;
         board[to.getY()][to.getX()] = tmp_from;
-        int max = 2;
-        if(board[to.getY()][to.getX()] instanceof Ground) max--;
-        int moves = 0;
         for(Organism o: organisms)
         {
             if(o.getPosition().getX() == from.getX() && o.getPosition().getY() == from.getY())
             {
                 o.setPosition(to);
-                moves++;
             }
             else if(o.getPosition().getX() == to.getX() && o.getPosition().getY() == to.getY())
             {
                 o.setPosition(from);
-                moves++;
             }
-            if (moves == max) break;
         }
+        for(Organism o : toAdd){
+            if(o.getPosition().getX() == from.getX() && o.getPosition().getY() == from.getY())
+            {
+                o.setPosition(to);
+            }
+            else if(o.getPosition().getX() == to.getX() && o.getPosition().getY() == to.getY())
+            {
+                o.setPosition(from);
+            }
+        }
+        for(Organism o : toKill){
+            if(o.getPosition().getX() == from.getX() && o.getPosition().getY() == from.getY())
+            {
+                o.setPosition(to);
+            }
+            else if(o.getPosition().getX() == to.getX() && o.getPosition().getY() == to.getY())
+            {
+                o.setPosition(from);
+            }
+        }
+        for(Organism o : toFix){
+            if(o.getPosition().getX() == from.getX() && o.getPosition().getY() == from.getY())
+            {
+                o.setPosition(to);
+            }
+            else if(o.getPosition().getX() == to.getX() && o.getPosition().getY() == to.getY())
+            {
+                o.setPosition(from);
+            }
+        }
+        board[from.getY()][from.getX()].setPosition(from);
+        board[to.getY()][to.getX()].setPosition(to);
     }
 
     public void addToKill(Organism organism){
@@ -195,9 +229,9 @@ public class World {
             if(organisms.get(i).getPosition().getX() == organism.getPosition().getX()
              && organisms.get(i).getPosition().getY() == organism.getPosition().getY())
             {
+                organisms.remove(i);
                 Organism tmp = new Ground(organism.getPosition(), organism.getWorld());
                 board[organism.getPosition().getY()][organism.getPosition().getX()] = tmp;
-                organisms.remove(i);
                 break;
             }
             i++;
@@ -242,7 +276,18 @@ public class World {
     }
 
     private void fixHelper(Organism organism){
-        organism.setParent(false);
+        int i =0;
+        while(i < organisms.size())
+        {
+            if(organisms.get(i).getPosition().getX() == organism.getPosition().getX()
+                    && organisms.get(i).getPosition().getY() == organism.getPosition().getY())
+            {
+                organisms.get(i).setParent(false);
+                break;
+            }
+            i++;
+        }
     }
 
+    /////////////////////////////////////////////////////////////
 }

@@ -30,14 +30,12 @@ public abstract class Animal extends Organism
     private boolean isAbleToMove(){
         Random r = new Random();
         boolean is = r.nextInt(101) < movementChanse;
-        if(!is) getWorld().getLogs().addLog(getWorld().getCommentator().announceMove(this,this.getPosition(),this.getPosition()));
         return is;
     }
 
     private boolean move(){
         Position heading = this.generateRandomPosition(this.getPosition());
         if(heading.getX() == getPosition().getX() && heading.getY() == getPosition().getY()){
-            getWorld().getLogs().addLog(getWorld().getCommentator().announceMove(this,this.getPosition(),heading));
             return true;
         }
         Organism tmp = getWorld().getOrganism(heading);
@@ -74,7 +72,7 @@ public abstract class Animal extends Organism
             int choice = r.nextInt(combinations.size());
             Position p = combinations.get(choice);
             Organism tmp = getWorld().getOrganism(p);
-            if(tmp instanceof Ground || !(tmp.isAlive()))
+            if(tmp instanceof Ground || !(tmp.isAlive()) && (p.getX() != getPosition().getX() && p.getY() != getPosition().getY()))
             {
                 Organism child = this.child(p);
                 child.setReady(false);
@@ -92,7 +90,7 @@ public abstract class Animal extends Organism
     public abstract boolean isSameSpecies(Organism organism);
     @Override
     public void action(){
-        if(isAbleToMove() && isReady())
+        if(isAbleToMove() && isReady() && isAlive())
         {
             int i = 0;
             while(i < movementRange)
@@ -119,8 +117,8 @@ public abstract class Animal extends Organism
         }
         else
         {
-            setAlive(false);
-            setReady(false);
+            this.setAlive(false);
+            this.setReady(false);
             getWorld().addToKill(this);
             getWorld().getLogs().addLog(getWorld().getCommentator().announceKill(enemy, this));
             return true;

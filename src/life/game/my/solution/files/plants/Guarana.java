@@ -34,7 +34,7 @@ public class Guarana extends Plant
     @Override
     public boolean collision(Organism enemy){
         enemy.setStrength(enemy.getStrength()+3);
-        /////////////////////////////////////////////////////getWorld().getScreen().addAction(getWorld().getCommentator().announceStrengthRise(enemy));
+        getWorld().getLogs().addLog(getWorld().getCommentator().announceStrengthRise(enemy));
         return super.collision(enemy);
     }
 }

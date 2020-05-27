@@ -44,7 +44,7 @@ public class Fox extends Animal
             if(combinations.size() == 0) break;
             int choice = r.nextInt(combinations.size());
             Organism tmp = getWorld().getOrganism(combinations.get(choice));
-            if(tmp instanceof Ground || tmp instanceof Fox){
+            if(tmp instanceof Ground || tmp instanceof Fox || tmp.getStrength() < getStrength()){
                 return combinations.get(choice);
             }
             combinations.remove(choice);

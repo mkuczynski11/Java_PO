@@ -65,10 +65,8 @@ public class GamePanel extends JPanel
     public void changeBoard(World world){
         for(int i =0; i <world.getScreenY();i++){
             for(int j =0; j < world.getScreenX(); j++){
-                if(board[i][j].getText() != world.getOrganism(new Position(j,i)).getSymbol()){
-                    board[i][j].setText(world.getOrganism(new Position(j,i)).getSymbol());
-                    board[i][j].setBackground(world.getOrganism(new Position(j,i)).getColor());
-                }
+                board[i][j].setText(world.getOrganism(new Position(j,i)).getSymbol());
+                board[i][j].setBackground(world.getOrganism(new Position(j,i)).getColor());
             }
         }
     }
