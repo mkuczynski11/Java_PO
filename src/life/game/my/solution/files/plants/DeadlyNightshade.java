@@ -24,10 +24,6 @@ public class DeadlyNightshade extends Plant
         return new DeadlyNightshade(position,getWorld());
     }
     @Override
-    public void save(){
-
-    }
-    @Override
     public Color getColor(){
         return Color.DARK_GRAY;
     }

@@ -23,10 +23,6 @@ public class SosnowskysHogweed extends Plant
         return new SosnowskysHogweed(position,getWorld());
     }
     @Override
-    public void save(){
-
-    }
-    @Override
     public Color getColor(){
         return Color.CYAN;
     }

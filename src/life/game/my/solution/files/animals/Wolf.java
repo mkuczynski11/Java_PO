@@ -24,10 +24,6 @@ public class Wolf extends Animal
     @Override
     public Organism child(Position position) {return new Wolf(position, getWorld());}
     @Override
-    public void save(){
-
-    }
-    @Override
     public Color getColor(){
         return Color.black;
     }

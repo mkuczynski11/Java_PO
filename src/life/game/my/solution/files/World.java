@@ -1,15 +1,20 @@
 package life.game.my.solution.files;
 
+import java.io.FileNotFoundException;
+import java.io.FileWriter;
 import java.util.*;
 
 import life.game.my.solution.files.animals.*;
 import life.game.my.solution.files.gui.*;
 import life.game.my.solution.files.plants.*;
 
+import java.io.File;
+import java.io.IOException;
+
 
 public class World {
-    private final int screenX;
-    private final int screenY;
+    private int screenX;
+    private int screenY;
     private int turn;
     private List<Organism> organisms;
     private List<Organism> toKill;
@@ -19,7 +24,6 @@ public class World {
     private Screen screen;
     private Commentator commentator;
     public DEFINE define;
-    private boolean running;
     private Log logs;
     private int currentHumanKey;
     private boolean useAbility;
@@ -45,14 +49,12 @@ public class World {
         this.screen = new Screen(this);
         this.define = new DEFINE();
         this.commentator = new Commentator();
-        this.running = false;
         this.logs = new Log();
         this.currentHumanKey = 0;
     }
 
     public void launch(){
         fillUpTheWorld();
-        this.running = true;
     }
 
     private void fillUpTheWorld(){
@@ -62,12 +64,12 @@ public class World {
         fillUpHelper(define.OWCA_AMOUNT, define.SYMBOL_OWCA);
         fillUpHelper(define.LIS_AMOUNT, define.SYMBOL_LIS);
         fillUpHelper(define.ANTYLOPA_AMOUNT, define.SYMBOL_ANTYLOPA);
-        //fillUpHelper(define.CYBEROWCA_AMOUNT, define.SYMBOL_CYBEROWCA);
+        fillUpHelper(define.CYBEROWCA_AMOUNT, define.SYMBOL_CYBEROWCA);
         fillUpHelper(define.TRAWA_AMOUNT, define.SYMBOL_TRAWA);
         fillUpHelper(define.MLECZ_AMOUNT, define.SYMBOL_MLECZ);
         fillUpHelper(define.GUARANA_AMOUNT, define.SYMBOL_GUARANA);
         fillUpHelper(define.WILCZEJAGODY_AMOUNT, define.SYMBOL_WIKLCZEJAGODY);
-        //fillUpHelper(define.BARSZCZSOSNOWSKIEGO_AMOUNT, define.SYMBOL_BARSZCZSOSNOWSKIEGO);
+        fillUpHelper(define.BARSZCZSOSNOWSKIEGO_AMOUNT, define.SYMBOL_BARSZCZSOSNOWSKIEGO);
         Collections.sort(organisms, new CustomComparator());
     }
     private void fillUpHelper(int amount, String symbol){
@@ -135,6 +137,14 @@ public class World {
 
     public void setUseAbility(boolean useAbility) {
         this.useAbility = useAbility;
+    }
+
+    public void setScreenX(int screenX) {
+        this.screenX = screenX;
+    }
+
+    public void setScreenY(int screenY) {
+        this.screenY = screenY;
     }
 
     public void makeTurn(){
@@ -289,5 +299,109 @@ public class World {
         }
     }
 
-    /////////////////////////////////////////////////////////////
+    public void saveGame(){
+        try{
+            File file = new File("zapis.txt");
+            if(file.createNewFile()){
+                System.out.println("File created: " + file.getName());
+            }
+            else{
+                System.out.println("File already exists.");
+            }
+            FileWriter fileWriter = new FileWriter(file, false);
+            fileWriter.write("S "+getScreenX()+" "+ getScreenY()+" "+getTurn()+"\n");
+            for(Organism o : organisms){
+                o.save(fileWriter);
+            }
+            fileWriter.close();
+        } catch (IOException e){
+            System.out.println("An error occurred.");
+            e.printStackTrace();
+        }
+    }
+
+    public void loadGame(){
+        this.organisms = new ArrayList<>();
+        this.toKill = new ArrayList<>();
+        this.toAdd = new ArrayList<>();
+        this.toFix = new ArrayList<>();
+
+        try{
+            File file = new File("zapis.txt");
+            Scanner myReader = new Scanner(file);
+            while(myReader.hasNextLine()){
+                String data = myReader.nextLine();
+                char c = data.charAt(0);
+                Position p = new Position(0,0);
+                Organism tmp = null;
+                if(c == "S".charAt(0)) { loadWorld(data); }
+                else if(c == define.SYMBOL_GROUND.charAt(0)){tmp = new Ground(p,this);}
+                else if(c == define.SYMBOL_CZLOWIEK.charAt(0)){tmp = new Human(p,this);}
+                else if(c == define.SYMBOL_WILK.charAt(0)){tmp = new Wolf(p, this);}
+                else if(c == define.SYMBOL_ZOLW.charAt(0)){tmp = new Turtle(p,this);}
+                else if(c == define.SYMBOL_OWCA.charAt(0)){tmp = new Sheep(p,this); }
+                else if(c == define.SYMBOL_LIS.charAt(0)){tmp = new Fox(p,this);}
+                else if(c == define.SYMBOL_ANTYLOPA.charAt(0)){tmp = new Antelope(p,this); }
+                else if(c == define.SYMBOL_CYBEROWCA.charAt(0)){tmp = new CyberSheep(p,this); }
+                else if(c == define.SYMBOL_TRAWA.charAt(0)){tmp = new Grass(p,this);
+                }
+                else if(c == define.SYMBOL_MLECZ.charAt(0)){tmp = new Milt(p,this);
+                }
+                else if(c == define.SYMBOL_GUARANA.charAt(0)){tmp = new Guarana(p,this);
+                }
+                else if(c == define.SYMBOL_WIKLCZEJAGODY.charAt(0)){tmp = new DeadlyNightshade(p,this);
+                }
+                else if(c == define.SYMBOL_BARSZCZSOSNOWSKIEGO.charAt(0)){tmp = new SosnowskysHogweed(p, this);
+                }
+                if(c != "S".charAt(0)) {
+                    tmp.load(data);
+                    board[tmp.getPosition().getY()][tmp.getPosition().getX()] = tmp;
+                    organisms.add(tmp);
+                }
+            }
+
+        } catch (FileNotFoundException e) {
+            System.out.println("An error occurred.");
+            e.printStackTrace();
+        }
+
+        this.screen = new Screen(this);
+    }
+
+    private void loadWorld(String data){
+        int count = 0;
+        int limit = 3;
+        int i = 2;
+        while(count < limit){
+            char c = data.charAt(i);
+            if(c == ' ')i++;
+            else
+            {
+                String number = "";
+                while(c >= '0' && c <= '9')
+                {
+                    number += c;
+                    i++;
+                    if( i == data.length()) break;
+                    c = data.charAt(i);
+                }
+                if (number != "")
+                {
+                    int result;
+                    result = Integer.parseInt(number);
+                    if(count == 0) this.setScreenX(result);
+                    else if (count == 1) this.setScreenY(result);
+                    else if (count == 2) this.setTurn(result);
+                    count++;
+                }
+                i++;
+            }
+        }
+        this.board = new Organism[screenY][screenX];
+        for(int k=0; k < screenY; k++){
+            for(int j =0;j<screenX; j++){
+                board[k][j] = new Ground(new Position(j,k),this);
+            }
+        }
+    }
 }

@@ -7,6 +7,8 @@ import life.game.my.solution.files.World;
 
 import java.awt.*;
 import java.awt.event.KeyEvent;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class Human extends Animal
@@ -49,8 +51,13 @@ public class Human extends Animal
     @Override
     public Organism child(Position position) {return new Human(position, getWorld());}
     @Override
-    public void save(){
-
+    public void save(FileWriter fileWriter){
+        try{
+            fileWriter.write(getSymbol()+" "+getAge()+" "+getStrength()+" "+getPosition().getX()+" "+getPosition().getY()+" "+getTurnsLeft()+" "+getCooldown()+"\n");
+        } catch (IOException e){
+            System.out.println("An error occurred.");
+            e.printStackTrace();
+        }
     }
     @Override
     public Color getColor(){
@@ -117,5 +124,37 @@ public class Human extends Animal
             }
             combinations.remove(0);
         }
+    }
+    @Override
+    public int load(String data){
+        int i = super.load(data);
+        int count = 0;
+        int limit = 2;
+        while(count < limit)
+        {
+            char c = data.charAt(i);
+            if(c == ' ') i++;
+            else
+            {
+                String number = "";
+                while(c >= '0' && c <= '9')
+                {
+                    number += c;
+                    i++;
+                    if(i == data.length()) break;
+                    c = data.charAt(i);
+                }
+                if(number != "")
+                {
+                    int result;
+                    result = Integer.parseInt(number);
+                    if(count == 0) this.setTurnsLeft(result);
+                    else if (count == 1) this.setCooldown(result);
+                    count++;
+                }
+                i++;
+            }
+        }
+        return i;
     }
 }

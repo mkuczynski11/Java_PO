@@ -26,10 +26,6 @@ public class Milt extends Plant
         return new Milt(position,getWorld());
     }
     @Override
-    public void save(){
-
-    }
-    @Override
     public Color getColor(){
         return Color.yellow;
     }

@@ -1,6 +1,8 @@
 package life.game.my.solution.files;
 
 import java.awt.*;
+import java.io.File;
+import java.io.FileWriter;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -93,6 +95,39 @@ public abstract class Organism
     public abstract boolean collision(Organism enemy);
     public abstract String getName();
     public abstract Organism child(Position position);
-    public abstract void save();
+    public abstract void save(FileWriter fileWriter);
     public abstract Color getColor();
+
+    public int load(String data){
+        int count = 0;
+        int limit = 4;
+        int i = 2;
+        while(count < limit){
+            char c = data.charAt(i);
+            if(c == ' ')i++;
+            else
+            {
+                String number = "";
+                while(c >= '0' && c <= '9')
+                {
+                    number += c;
+                    i++;
+                    if(i == data.length()) break;
+                    c = data.charAt(i);
+                }
+                if (number != "")
+                {
+                    int result;
+                    result = Integer.parseInt(number);
+                    if(count == 0) this.setAge(result);
+                    else if (count == 1) this.setStrength(result);
+                    else if (count == 2) this.setPosition(result, getPosition().getY());
+                    else if (count == 3) this.setPosition(getPosition().getX(), result);
+                    count ++;
+                }
+                i++;
+            }
+        }
+        return i;
+    }
 }

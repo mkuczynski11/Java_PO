@@ -1,5 +1,7 @@
 package life.game.my.solution.files;
 
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.List;
 import java.util.Random;
 
@@ -122,6 +124,15 @@ public abstract class Animal extends Organism
             getWorld().addToKill(this);
             getWorld().getLogs().addLog(getWorld().getCommentator().announceKill(enemy, this));
             return true;
+        }
+    }
+    @Override
+    public void save(FileWriter fileWriter) {
+        try{
+            fileWriter.write(getSymbol()+" "+getAge()+" "+getStrength()+" "+getPosition().getX()+" "+getPosition().getY()+"\n");
+        } catch (IOException e){
+            System.out.println("An error occurred.");
+            e.printStackTrace();
         }
     }
 }

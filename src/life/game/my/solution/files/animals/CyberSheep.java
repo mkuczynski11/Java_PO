@@ -29,10 +29,6 @@ public class CyberSheep extends Animal
     @Override
     public Organism child(Position position) {return new CyberSheep(position, getWorld());}
     @Override
-    public void save(){
-
-    }
-    @Override
     public Color getColor(){
         return Color.DARK_GRAY;
     }

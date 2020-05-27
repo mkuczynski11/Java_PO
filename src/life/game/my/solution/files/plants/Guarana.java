@@ -24,10 +24,6 @@ public class Guarana extends Plant
         return new Guarana(position,getWorld());
     }
     @Override
-    public void save(){
-
-    }
-    @Override
     public Color getColor(){
         return Color.red;
     }

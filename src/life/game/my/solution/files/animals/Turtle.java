@@ -29,10 +29,6 @@ public class Turtle extends Animal
     @Override
     public Organism child(Position position) {return new Turtle(position, getWorld());}
     @Override
-    public void save(){
-
-    }
-    @Override
     public Color getColor(){
         return Color.pink;
     }

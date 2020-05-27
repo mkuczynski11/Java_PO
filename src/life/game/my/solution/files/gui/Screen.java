@@ -71,6 +71,7 @@ public class Screen
                 bSaveGame.addActionListener(new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
+                        world.saveGame();
                     }
                 });
 
@@ -81,7 +82,8 @@ public class Screen
                 bLoadGame.addActionListener(new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
-
+                        frame.dispose();
+                        world.loadGame();
                     }
                 });
                 menu.add(bExit);

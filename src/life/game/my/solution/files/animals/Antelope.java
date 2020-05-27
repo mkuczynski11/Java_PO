@@ -28,10 +28,6 @@ public class Antelope extends Animal
     @Override
     public Organism child(Position position) {return new Antelope(position, getWorld());}
     @Override
-    public void save(){
-
-    }
-    @Override
     public Color getColor(){
         return Color.blue;
     }

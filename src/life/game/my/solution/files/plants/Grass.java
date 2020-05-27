@@ -24,10 +24,6 @@ public class Grass extends Plant
         return new Grass(position,getWorld());
     }
     @Override
-    public void save(){
-
-    }
-    @Override
     public Color getColor(){
         return Color.green;
     }

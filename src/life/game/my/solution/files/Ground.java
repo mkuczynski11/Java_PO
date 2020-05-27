@@ -4,6 +4,7 @@ import life.game.my.solution.files.animals.Antelope;
 import life.game.my.solution.files.animals.Wolf;
 
 import java.awt.*;
+import java.io.FileWriter;
 
 public class Ground extends Organism
 {
@@ -21,15 +22,15 @@ public class Ground extends Organism
 
     }
     @Override
+    public void save(FileWriter fileWriter){
+
+    }
+    @Override
     public String getName(){
         return "Ground";
     }
     @Override
     public Organism child(Position position) {return new Ground(position, getWorld());}
-    @Override
-    public void save(){
-
-    }
     @Override
     public boolean collision(Organism enemy){
         return true;
