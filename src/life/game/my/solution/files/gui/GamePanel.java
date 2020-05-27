@@ -6,20 +6,40 @@ import life.game.my.solution.files.World;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 
 public class GamePanel extends JPanel
 {
-    private JButton[][] board;
+    private GameButton[][] board;
 
     public GamePanel(int y, int x, World world){
         setLayout(new GridLayout(y,x));
-        board = new JButton[y][x];
+        board = new GameButton[y][x];
+
+        ActionListener buttonListener = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String text = e.getActionCommand();
+                if(text == "g"){
+                    String[] values = {"Antylopa", "Cyberowca", "Lis", "Owca", "Zolw", "Wilk", "Wilczejagody","Trawa", "Guarana", "Mlecz", "BarszczSosnowskiego"};
+                    Object selected = JOptionPane.showInputDialog(null, "Jaki ogranizm?", "Wybor", JOptionPane.DEFAULT_OPTION, null, values, "0");
+                    if ( selected != null ){
+                        Position p = findButton(e.getSource());
+                        world.addOrganism(p, selected.toString());
+                        changeBoard(world);
+                    }else{
+                        System.out.println("User cancelled");
+                    }
+                }
+            }
+        };
 
         for (int i = 0; i < y; i++) {
             for (int j = 0; j < x; j++) {
-                board[i][j] = new JButton(world.getOrganism(new Position(j,i)).getSymbol());
+                board[i][j] = new GameButton(world.getOrganism(new Position(j,i)).getSymbol(),j,i);
                 board[i][j].setBackground(world.getOrganism(new Position(j,i)).getColor());
+                board[i][j].addActionListener(buttonListener);
                 add(board[i][j]);
             }
         }
@@ -69,5 +89,16 @@ public class GamePanel extends JPanel
                 board[i][j].setBackground(world.getOrganism(new Position(j,i)).getColor());
             }
         }
+    }
+
+    private Position findButton(Object c){
+        for(int y = 0; y < board.length; y++){
+            for(int x =0; x < board[0].length; x++){
+                if(c.equals(board[y][x])){
+                    return new Position(x,y);
+                }
+            }
+        }
+        return new Position(-1,-1);
     }
 }

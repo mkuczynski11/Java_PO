@@ -404,4 +404,18 @@ public class World {
             }
         }
     }
+    public void addOrganism(Position position, String name){
+        if(name == "Antylopa") board[position.getY()][position.getX()] = new Antelope(position, this);
+        else if(name == "Cyberowca") board[position.getY()][position.getX()] = new CyberSheep(position, this);
+        else if(name == "Lis") board[position.getY()][position.getX()] = new Fox(position, this);
+        else if(name == "Owca") board[position.getY()][position.getX()] = new Sheep(position, this);
+        else if(name == "Zolw") board[position.getY()][position.getX()] = new Turtle(position, this);
+        else if(name == "Wilk") board[position.getY()][position.getX()] = new Wolf(position, this);
+        else if(name == "Wilczejagody") board[position.getY()][position.getX()] = new DeadlyNightshade(position, this);
+        else if(name == "Trawa") board[position.getY()][position.getX()] = new Grass(position, this);
+        else if(name == "Guarana") board[position.getY()][position.getX()] = new Guarana(position, this);
+        else if(name == "Mlecz") board[position.getY()][position.getX()] = new Milt(position, this);
+        else if(name == "BarszczSosnowskiego") board[position.getY()][position.getX()] = new SosnowskysHogweed(position, this);
+        organisms.add(board[position.getY()][position.getX()]);
+    }
 }
