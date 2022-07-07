@@ -1,2 +1,2 @@
 # Java_PO
-Project for objected oriented programming in java
+Simple life game implemented in Java using OOP approach.
